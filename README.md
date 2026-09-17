@@ -1,6 +1,6 @@
 # Driveline Website
 
-Official website for [Driveline](https://devdismissal.github.io/website) — School dismissal and family check-in platform.
+Official website for [Driveline](https://dismissalcue.com) — Enterprise school pickup management platform.
 
 ## Pages
 
@@ -8,47 +8,32 @@ Official website for [Driveline](https://devdismissal.github.io/website) — Sch
 |---|---|
 | `index.html` | Main landing page |
 | `privacy.html` | Privacy Policy |
+| `CNAME` | Custom domain configuration |
 
 ## About
 
-Driveline streamlines school dismissal with secure family check-in, parent notifications, and staff handoff records. Built for safety, designed for simplicity.
+Driveline is an enterprise school pickup management platform that uses GPS geofencing to coordinate safe, efficient student releases. When parents arrive within your school's designated pickup zone, staff receive instant notifications — eliminating long car lines, reducing wait times, and ensuring every child goes home with the right person, every time.
 
 ## Features
 
-- **Family Check-In:** Separate adult accounts with per-child pickup claims
-- **Real-Time Notifications:** Instant SMS and email alerts for parents
-- **Staff Handoff Records:** Complete audit trail of pickups
-- **Permission Scoping:** Role-based access control
-- **Near-School Detection:** GPS-based proximity verification
-- **Open Source:** Self-hostable and fully transparent
-
-## Development
-
-This is a static GitHub Pages site. To run locally:
-
-```bash
-# Serve the site locally (requires Python 3)
-python3 -m http.server 8000
-
-# Or use any static file server
-npx serve .
-```
-
-Visit `http://localhost:8000` in your browser.
+- **GPS Geofencing:** Custom pickup zones with automatic parent detection
+- **Instant Staff Alerts:** Real-time notifications when parents arrive
+- **Authorized Pickup Only:** Per-child authorization lists
+- **Complete Audit Trail:** Full compliance documentation
+- **60% Faster Dismissal:** Prepare students before parents arrive
+- **Enterprise Security:** FERPA-compliant data handling
 
 ## Deployment
 
-This site is automatically deployed to GitHub Pages when pushed to the `main` branch.
+This site is hosted on GitHub Pages and automatically deployed when changes are pushed to the `main` branch.
 
-## Contributing
+**Live Site:** https://dismissalcue.com
 
-This is the public website repository for Driveline. For issues or suggestions related to the website, please open a GitHub issue.
+## Contact
 
-For the main application code, see [AgenticEHR/DrivelineDismissal](https://github.com/AgenticEHR/DrivelineDismissal).
-
-## License
-
-MIT License - see the main [Driveline repository](https://github.com/AgenticEHR/DrivelineDismissal) for details.
+- **Email:** hello@dismissalcue.com
+- **Support:** support@dismissalcue.com
+- **Website:** https://dismissalcue.com
 
 ## Legal
 
