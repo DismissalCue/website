@@ -601,7 +601,7 @@
     <div class="demo-video-container">
       <div class="demo-video-aspect">
         <div class="demo-video-placeholder">
-          <div class="demo-play-button" onclick="alert('Demo video coming soon! Contact us at hello@dismissalcue.com for a live demonstration.')">
+          <div class="demo-play-button" onclick="openDemo()">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
@@ -728,6 +728,72 @@
   </ul>
   <p class="footer-copy">© 2026 Driveline. All rights reserved.</p>
 </footer>
+
+<!-- Demo Modal -->
+<div id="demoModal" class="demo-modal">
+  <iframe id="demoFrame" src="demo.html" frameborder="0"></iframe>
+</div>
+
+<style>
+  .demo-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .demo-modal.active {
+    display: block;
+  }
+
+  .demo-modal iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+
+<script>
+  function openDemo() {
+    const modal = document.getElementById('demoModal');
+    const iframe = document.getElementById('demoFrame');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Reload iframe to restart demo
+    iframe.src = iframe.src;
+  }
+
+  function closeDemo() {
+    const modal = document.getElementById('demoModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Listen for close message from iframe
+  window.addEventListener('message', function(event) {
+    if (event.data === 'closeDemo') {
+      closeDemo();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeDemo();
+    }
+  });
+</script>
 
 </body>
 </html>

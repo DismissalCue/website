@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Driveline Demo - Interactive Dismissal Simulation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0F172A;
+    color: white;
+    overflow: hidden;
+  }
+
+  .demo-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .demo-scene {
+    width: 95%;
+    max-width: 1400px;
+    height: 90%;
+    max-height: 800px;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+  }
+
+  /* ===== SCHOOL BUILDING ===== */
+  .school {
+    position: absolute;
+    top: 80px;
+    right: 120px;
+    width: 280px;
+    height: 200px;
+    background: #475569;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .school-roof {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 50px solid #64748B;
+  }
+
+  .school-sign {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #1E293B;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .school-windows {
+    position: absolute;
+    top: 70px;
+    left: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+
+  .window {
+    width: 45px;
+    height: 50px;
+    background: #CBD5E1;
+    border-radius: 4px;
+    border: 3px solid #94A3B8;
+  }
+
+  .school-door {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 90px;
+    background: #334155;
+    border-radius: 8px 8px 0 0;
+    border: 3px solid #475569;
+  }
+
+  /* ===== GEOFENCE ===== */
+  .geofence {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    border: 4px dashed #3B82F6;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: pulse-fence 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse-fence {
+    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.03); }
+  }
+
+  .geofence-label {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #3B82F6;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  }
+
+  /* ===== CAR WITH CHARACTER ===== */
+  .car-container {
+    position: absolute;
+    bottom: 80px;
+    left: -200px;
+    opacity: 0;
+    z-index: 10;
+  }
+
+  .car {
+    width: 120px;
+    height: 70px;
+    background: linear-gradient(180deg, #60A5FA 0%, #3B82F6 100%);
+    border-radius: 12px 12px 6px 6px;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    position: relative;
+  }
+
+  .car-top {
+    position: absolute;
+    top: -25px;
+    left: 25px;
+    width: 70px;
+    height: 35px;
+    background: linear-gradient(180deg, #93C5FD 0%, #60A5FA 100%);
+    border-radius: 8px 8px 0 0;
+  }
+
+  .car-window {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 50px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+
+  .car-wheels {
+    position: absolute;
+    bottom: -12px;
+    left: 15px;
+    width: 20px;
+    height: 20px;
+    background: #1E293B;
+    border-radius: 50%;
+    border: 3px solid #334155;
+    box-shadow: 75px 0 0 0 #1E293B, 75px 0 0 3px #334155;
+  }
+
+  .driver {
+    position: absolute;
+    top: -50px;
+    left: 35px;
+    width: 40px;
+    height: 60px;
+  }
+
+  .driver-head {
+    width: 32px;
+    height: 32px;
+    background: #FBBF24;
+    border-radius: 50%;
+    margin: 0 auto 4px;
+    border: 3px solid #F59E0B;
+  }
+
+  .driver-hair {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 16px;
+    background: #92400E;
+    border-radius: 50% 50% 0 0;
+  }
+
+  .driver-face {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .driver-eye {
+    width: 5px;
+    height: 5px;
+    background: #1E293B;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+  }
+
+  .driver-smile {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 6px;
+    border: 2px solid #1E293B;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+  }
+
+  /* ===== STUDENT CHARACTER ===== */
+  .student-container {
+    position: absolute;
+    top: 290px;
+    right: 150px;
+    opacity: 0;
+    z-index: 5;
+  }
+
+  .student {
+    width: 50px;
+    height: 80px;
+    position: relative;
+  }
+
+  .student-head {
+    width: 36px;
+    height: 36px;
+    background: #FCA5A5;
+    border-radius: 50%;
+    margin: 0 auto 6px;
+    border: 3px solid #F87171;
+    position: relative;
+  }
+
+  .student-hair {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 18px;
+    background: #78350F;
+    border-radius: 50% 50% 0 0;
+  }
+
+  .student-eyes {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .student-eye {
+    width: 6px;
+    height: 6px;
+    background: #1E293B;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 3px;
+  }
+
+  .student-smile {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 7px;
+    border: 2px solid #1E293B;
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+  }
+
+  .student-body {
+    width: 40px;
+    height: 45px;
+    background: linear-gradient(180deg, #34D399 0%, #10B981 100%);
+    border-radius: 6px;
+    margin: 0 auto;
+    border: 3px solid #059669;
+  }
+
+  .backpack {
+    position: absolute;
+    top: 45px;
+    right: -8px;
+    width: 20px;
+    height: 25px;
+    background: #EF4444;
+    border-radius: 4px;
+    border: 2px solid #DC2626;
+  }
+
+  /* ===== STAFF CHARACTER ===== */
+  .staff-container {
+    position: absolute;
+    top: 290px;
+    right: 220px;
+    opacity: 0;
+    z-index: 5;
+  }
+
+  .staff {
+    width: 50px;
+    height: 85px;
+    position: relative;
+  }
+
+  .staff-head {
+    width: 38px;
+    height: 38px;
+    background: #FCD34D;
+    border-radius: 50%;
+    margin: 0 auto 6px;
+    border: 3px solid #FBBF24;
+    position: relative;
+  }
+
+  .staff-glasses {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 12px;
+    border: 2px solid #1E293B;
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  .staff-glasses::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3px;
+    height: 2px;
+    background: #1E293B;
+  }
+
+  .staff-smile {
+    position: absolute;
+    top: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 8px;
+    border: 2px solid #1E293B;
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .staff-body {
+    width: 45px;
+    height: 50px;
+    background: linear-gradient(180deg, #60A5FA 0%, #3B82F6 100%);
+    border-radius: 6px;
+    margin: 0 auto;
+    border: 3px solid #2563EB;
+  }
+
+  .staff-badge {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 22px;
+    background: white;
+    border-radius: 2px;
+    border: 2px solid #FCD34D;
+  }
+
+  /* ===== PHONE SCREENS ===== */
+  .phone {
+    position: absolute;
+    width: 200px;
+    height: 400px;
+    background: #1E293B;
+    border-radius: 24px;
+    border: 8px solid #0F172A;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  .phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 24px;
+    background: #0F172A;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .phone-screen {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  .parent-phone {
+    top: 80px;
+    left: 50px;
+  }
+
+  .staff-phone {
+    top: 80px;
+    right: 50px;
+  }
+
+  .phone-header {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1E293B;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .phone-content {
+    font-size: 13px;
+    color: #64748B;
+    line-height: 1.6;
+  }
+
+  .phone-status {
+    margin-top: 16px;
+    padding: 12px;
+    background: #EFF6FF;
+    border-radius: 8px;
+    border-left: 4px solid #3B82F6;
+  }
+
+  .phone-status-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #3B82F6;
+    margin-bottom: 4px;
+  }
+
+  .phone-status-text {
+    font-size: 11px;
+    color: #64748B;
+  }
+
+  .notification-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    background: #EF4444;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ===== STATUS BAR ===== */
+  .status-bar {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 18px 36px;
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    min-width: 400px;
+    text-align: center;
+  }
+
+  .status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #10B981;
+    border-radius: 50%;
+    margin-right: 12px;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ===== CONTROLS ===== */
+  .restart-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: #3B82F6;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  }
+
+  .restart-btn:hover {
+    background: #2563EB;
+    transform: scale(1.05);
+  }
+
+  .restart-btn.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes drive-in {
+    from { left: -200px; opacity: 0; }
+    to { left: 250px; opacity: 1; }
+  }
+
+  @keyframes phone-slide-in {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes phone-slide-out {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-30px); }
+  }
+
+  @keyframes walk-out {
+    from { right: 150px; opacity: 0; }
+    to { right: 90px; opacity: 1; }
+  }
+
+  @keyframes staff-walk {
+    from { right: 220px; opacity: 0; }
+    to { right: 120px; opacity: 1; }
+  }
+
+  @keyframes walk-to-car {
+    to { right: -100px; opacity: 0; }
+  }
+
+  @keyframes drive-away {
+    from { left: 250px; opacity: 1; }
+    to { left: -200px; opacity: 0; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .status-bar { min-width: 300px; font-size: 13px; padding: 14px 24px; }
+    .phone { transform: scale(0.8); }
+  }
+</style>
+</head>
+<body>
+  <div class="demo-container">
+    <div class="demo-scene">
+      <button class="close-btn" onclick="window.parent.postMessage('closeDemo', '*')" title="Close demo">×</button>
+
+      <div class="geofence">
+        <div class="geofence-label">🌍 GPS PICKUP ZONE</div>
+      </div>
+
+      <div class="school">
+        <div class="school-roof"></div>
+        <div class="school-sign">SCHOOL</div>
+        <div class="school-windows">
+          <div class="window"></div>
+          <div class="window"></div>
+          <div class="window"></div>
+          <div class="window"></div>
+          <div class="window"></div>
+          <div class="window"></div>
+          <div class="window"></div>
+          <div class="window"></div>
+        </div>
+        <div class="school-door"></div>
+      </div>
+
+      <div class="car-container">
+        <div class="driver">
+          <div class="driver-head">
+            <div class="driver-hair"></div>
+            <div class="driver-face">
+              <span class="driver-eye"></span>
+              <span class="driver-eye"></span>
+            </div>
+            <div class="driver-smile"></div>
+          </div>
+        </div>
+        <div class="car">
+          <div class="car-top">
+            <div class="car-window"></div>
+          </div>
+          <div class="car-wheels"></div>
+        </div>
+      </div>
+
+      <div class="student-container">
+        <div class="student">
+          <div class="student-head">
+            <div class="student-hair"></div>
+            <div class="student-eyes">
+              <span class="student-eye"></span>
+              <span class="student-eye"></span>
+            </div>
+            <div class="student-smile"></div>
+          </div>
+          <div class="student-body"></div>
+          <div class="backpack"></div>
+        </div>
+      </div>
+
+      <div class="staff-container">
+        <div class="staff">
+          <div class="staff-head">
+            <div class="staff-glasses"></div>
+            <div class="staff-smile"></div>
+          </div>
+          <div class="staff-body"></div>
+          <div class="staff-badge"></div>
+        </div>
+      </div>
+
+      <!-- Parent Phone -->
+      <div class="phone parent-phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-header">📱 Parent App</div>
+          <div class="phone-content">
+            <strong>Sarah Johnson</strong><br>
+            Picking up: Emma Johnson<br>
+            Grade: 3rd
+          </div>
+          <div class="phone-status">
+            <div class="phone-status-title">⏱️ Status</div>
+            <div class="phone-status-text">Approaching pickup zone...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Staff Phone -->
+      <div class="phone staff-phone">
+        <div class="phone-notch"></div>
+        <div class="notification-badge">1</div>
+        <div class="phone-screen">
+          <div class="phone-header">👨‍🏫 Staff Dashboard</div>
+          <div class="phone-content">
+            <strong>New Pickup Request</strong><br>
+            Student: Emma Johnson<br>
+            Parent: Sarah Johnson<br>
+            Vehicle: Blue Toyota
+          </div>
+          <div class="phone-status">
+            <div class="phone-status-title">🔔 Alert</div>
+            <div class="phone-status-text">Parent entered geofence at 3:24 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="status-bar">
+        <span class="status-indicator"></span>
+        <span class="status-text">Initializing demo...</span>
+      </div>
+
+      <button class="restart-btn" onclick="restartDemo()">🔄 Restart Demo</button>
+    </div>
+  </div>
+
+  <script>
+    let timeline;
+
+    function startDemo() {
+      const car = document.querySelector('.car-container');
+      const parentPhone = document.querySelector('.parent-phone');
+      const staffPhone = document.querySelector('.staff-phone');
+      const student = document.querySelector('.student-container');
+      const staff = document.querySelector('.staff-container');
+      const statusText = document.querySelector('.status-text');
+      const restartBtn = document.querySelector('.restart-btn');
+      const parentStatus = parentPhone.querySelector('.phone-status-text');
+      const staffStatus = staffPhone.querySelector('.phone-status-text');
+
+      // Reset
+      car.style.animation = 'none';
+      car.style.opacity = '0';
+      parentPhone.style.animation = 'none';
+      parentPhone.style.opacity = '0';
+      staffPhone.style.animation = 'none';
+      staffPhone.style.opacity = '0';
+      student.style.animation = 'none';
+      student.style.opacity = '0';
+      staff.style.animation = 'none';
+      staff.style.opacity = '0';
+      restartBtn.classList.remove('visible');
+
+      // STEP 1: Parent approaching (0-2s)
+      setTimeout(() => {
+        statusText.textContent = '1️⃣ Parent driving to school...';
+        parentPhone.style.animation = 'phone-slide-in 0.5s ease-out forwards';
+        parentStatus.textContent = 'Driving to school...';
+      }, 500);
+
+      // STEP 2: Entering geofence (2-4s)
+      setTimeout(() => {
+        statusText.textContent = '2️⃣ Parent enters GPS geofence zone...';
+        car.style.animation = 'drive-in 2.5s ease-out forwards';
+        parentStatus.textContent = 'Entered pickup zone! ✅';
+      }, 2000);
+
+      // STEP 3: Staff notification (4-6s)
+      setTimeout(() => {
+        statusText.textContent = '3️⃣ Staff receives instant notification!';
+        staffPhone.style.animation = 'phone-slide-in 0.5s ease-out forwards';
+        staffStatus.textContent = 'Preparing Emma for pickup...';
+      }, 4500);
+
+      // STEP 4: Staff prepares student (6-8s)
+      setTimeout(() => {
+        statusText.textContent = '4️⃣ Staff calls student for pickup...';
+        student.style.animation = 'walk-out 1.5s ease-in-out forwards';
+        staff.style.animation = 'staff-walk 1.5s ease-in-out forwards';
+        staffStatus.textContent = 'Walking Emma to pickup point...';
+      }, 6500);
+
+      // STEP 5: Handoff (8-10s)
+      setTimeout(() => {
+        statusText.textContent = '5️⃣ Safe handoff to authorized guardian!';
+        parentStatus.textContent = 'Emma picked up! 🎉';
+        staffStatus.textContent = 'Handoff complete. Logged.';
+      }, 9500);
+
+      // STEP 6: Departure (10-12s)
+      setTimeout(() => {
+        statusText.textContent = '6️⃣ Student departs with parent...';
+        student.style.animation = 'walk-to-car 2s ease-in forwards';
+        staff.style.animation = 'staff-walk 2s ease-in reverse';
+      }, 11000);
+
+      // STEP 7: Drive away (12-14s)
+      setTimeout(() => {
+        statusText.textContent = '7️⃣ Pickup complete! Total time: ~30 seconds';
+        car.style.animation = 'drive-away 2.5s ease-in forwards';
+        parentPhone.style.animation = 'phone-slide-out 0.5s ease-in forwards';
+        staffPhone.style.animation = 'phone-slide-out 0.5s ease-in forwards';
+      }, 13000);
+
+      // Show restart button
+      setTimeout(() => {
+        restartBtn.classList.add('visible');
+        statusText.textContent = '✅ Demo complete! That's 60% faster than traditional dismissal.';
+      }, 15500);
+    }
+
+    function restartDemo() {
+      const elements = document.querySelectorAll('.car-container, .student-container, .staff-container, .phone');
+      elements.forEach(el => {
+        el.style.animation = 'none';
+        el.style.opacity = '0';
+      });
+
+      document.querySelector('.restart-btn').classList.remove('visible');
+      document.querySelector('.status-text').textContent = '🔄 Restarting demo...';
+
+      setTimeout(startDemo, 800);
+    }
+
+    // Auto-start on load
+    window.addEventListener('load', () => {
+      setTimeout(startDemo, 1200);
+    });
+  </script>
+</body>
+</html>
