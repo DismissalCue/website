@@ -227,62 +227,25 @@
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   }
 
-  .demo-video-aspect {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  }
-
-  .demo-video-placeholder {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .demo-video-container video {
+    display: block;
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-    gap: 2rem;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background: var(--navy);
   }
 
-  .demo-play-button {
-    width: 80px;
-    height: 80px;
-    background: var(--primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+  .demo-description, .demo-transcript {
+    max-width: 900px;
+    margin: 1.5rem auto 0;
+    color: #CBD5E1;
+    line-height: 1.7;
   }
 
-  .demo-play-button:hover {
-    transform: scale(1.1);
-    background: var(--primary-light);
-    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.6);
-  }
-
-  .demo-play-button svg {
-    width: 32px;
-    height: 32px;
-    fill: white;
-    margin-left: 4px;
-  }
-
-  .demo-placeholder-text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: white;
-  }
-
-  .demo-placeholder-subtext {
-    font-size: 0.95rem;
-    color: var(--muted);
-  }
+  .demo-description { text-align: center; }
+  .demo-description a { color: #93C5FD; }
+  .demo-transcript summary { cursor: pointer; color: white; }
+  .demo-transcript ol { padding-left: 1.5rem; margin-top: 1rem; }
 
   .section-label {
     font-size: 0.75rem;
@@ -525,9 +488,6 @@
     .cta-band { padding: 5rem 1.5rem; }
     footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
     .hero-cta-group { flex-direction: column; width: 100%; max-width: 300px; }
-    .demo-placeholder-text { font-size: 1.2rem; }
-    .demo-play-button { width: 64px; height: 64px; }
-    .demo-play-button svg { width: 24px; height: 24px; }
   }
 
   /* ── ANIMATIONS ── */
@@ -599,18 +559,38 @@
       <h2 class="mission-title">Watch how Driveline transforms dismissal</h2>
     </div>
     <div class="demo-video-container">
-      <div class="demo-video-aspect">
-        <div class="demo-video-placeholder">
-          <div class="demo-play-button" onclick="openDemo()">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-          </div>
-          <h3 class="demo-placeholder-text">System Demo</h3>
-          <p class="demo-placeholder-subtext">See the complete pickup workflow from geofence entry to handoff</p>
-        </div>
-      </div>
+      <video controls playsinline preload="metadata"
+             width="1280" height="720"
+             poster="media/driveline-simulation-poster.jpg"
+             aria-label="Driveline school pickup simulation"
+             aria-describedby="demo-description">
+        <source src="media/driveline-simulation-demo.mp4" type="video/mp4">
+        Your browser does not support embedded video.
+        <a href="media/driveline-simulation-demo.mp4">Download the simulation demo</a>.
+      </video>
     </div>
+    <p class="demo-description" id="demo-description">
+      A 48-second simulation of the planned pickup workflow, using fictional people and a fictional campus.
+      Silent video with on-screen explanations.
+      <a href="media/driveline-simulation-demo.mp4" download>Download video</a>
+    </p>
+    <details class="demo-transcript">
+      <summary>Read the demo walkthrough</summary>
+      <ol>
+        <li><strong>Approach campus (0:00).</strong> Family 1800 approaches Maple Grove School.
+          The adult has signed in with MFA. Geofence entry wakes the app; near-school checks are still required.</li>
+        <li><strong>Check in (0:08).</strong> The adult selects Alex and Sam and confirms arrival once.
+          Fresh presence and pickup authorization checks must pass before check-in is accepted.</li>
+        <li><strong>Join the queue (0:16).</strong> Each child has one active pickup claim.
+          Authorized parents receive an arrival alert. Children stay in class while the family waits.</li>
+        <li><strong>Classroom call (0:24).</strong> As the car moves forward, the teacher receives and
+          acknowledges the call. The hallway display shows tag 1800.</li>
+        <li><strong>Staff handoff (0:32).</strong> Staff verify the authorized collector using the school's
+          physical release procedure and confirm the handoff. Arrival alone never releases a child.</li>
+        <li><strong>Pickup record (0:40).</strong> The record identifies the children, collector Jordan Taylor,
+          and confirming staff member Morgan. Parents receive a pickup notification.</li>
+      </ol>
+    </details>
   </div>
 </section>
 
@@ -728,78 +708,6 @@
   </ul>
   <p class="footer-copy">© 2026 Driveline. All rights reserved.</p>
 </footer>
-
-<!-- Demo Modal -->
-<div id="demoModal" class="demo-modal">
-  <iframe id="demoFrame" src="demo.html" frameborder="0"></iframe>
-</div>
-
-<style>
-  .demo-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 10000;
-    animation: fadeIn 0.3s ease-out;
-  }
-
-  .demo-modal.active {
-    display: block;
-  }
-
-  .demo-modal iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-</style>
-
-<script>
-  let demoLoaded = false;
-
-  function openDemo() {
-    const modal = document.getElementById('demoModal');
-    const iframe = document.getElementById('demoFrame');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    // Only reload if already loaded before (to restart)
-    if (demoLoaded) {
-      iframe.src = 'demo.html';
-    } else {
-      demoLoaded = true;
-    }
-  }
-
-  function closeDemo() {
-    const modal = document.getElementById('demoModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  // Listen for close message from iframe
-  window.addEventListener('message', function(event) {
-    if (event.data === 'closeDemo') {
-      closeDemo();
-    }
-  });
-
-  // Close on Escape key
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' && document.getElementById('demoModal').classList.contains('active')) {
-      closeDemo();
-    }
-  });
-</script>
 
 </body>
 </html>
