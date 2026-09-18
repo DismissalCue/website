@@ -1,7 +1,7 @@
 # Simulation demo video
 
 - `driveline-simulation-narrated.mp4`: published demo with ElevenLabs Bella narration
-  (American English), AAC audio, and the original animation.
+  (American English), AAC audio, and the animated parent phone check-in.
 - `driveline-narration.en.vtt`: optional English closed captions in the player.
 - `driveline-simulation-demo.mp4`: original silent 48-second animation, 1280 × 720,
   24 fps, H.264/yuv420p, optimized for progressive web playback.
@@ -44,5 +44,10 @@ through the website repository’s existing GitHub Pages workflow.
 
 Voiceover uses `eleven_multilingual_v2` with Bella. Six separately generated clips
 are aligned to eight-second scenes, normalized for playback, and muxed with the
-unchanged H.264 video. Generating the silent animation does not replace the narrated
+H.264 animation. Generating the silent animation does not replace the narrated
 file. The API credential is outside this repository and is never used by the website.
+
+The opening two scenes now show a fictional parent/guardian beside a phone,
+near-school readiness, child selection with animated touch gestures, one check-in
+for both children, verification, and a confirmation with queue position. Existing
+narration was reused; no additional ElevenLabs requests were needed for this update.

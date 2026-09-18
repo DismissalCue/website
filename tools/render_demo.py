@@ -1,6 +1,6 @@
 """Render the fictional Driveline walkthrough. Requires Pillow and ffmpeg.
 
-Run: python3 website/tools/render_demo.py
+Run from the website directory: python3 tools/render_demo.py
 Optional: DRIVELINE_FONT_DIR points to a directory containing Arial.ttf and Arial Bold.ttf.
 """
 from pathlib import Path
@@ -81,7 +81,7 @@ def frame(t):
     for x in range(70, 690, 48):
         d.line((x, 465, x+24, 465), fill='#94A3B8', width=2)
     txt(506, 513, 'PICKUP CURB', 14, MUTED, True)
-    xs = [104 + 145*ease(u), 249, 300+55*ease(u), 355+115*ease(u), 470, 470+235*ease(u)]
+    xs = [104 + 196*ease(u), 300, 300+55*ease(u), 355+115*ease(u), 470, 470+235*ease(u)]
     cx = xs[scene]
     if scene == 2:
         for gx in (450, 561):
@@ -101,24 +101,96 @@ def frame(t):
         txt(cx-20, 496, '1800', 16, bold=True)
     txt(65, 532, 'Illustrative campus layout', 14, MUTED)
 
-    box((738, 202, 1240, 563), PANEL)
-    txt(764, 224, role, 14, '#60A5FA', True)
-    txt(764, 256, heading, 28, bold=True)
-    txt(764, 297, detail, 18, MUTED)
-    for i, row in enumerate(rows):
-        y = 339+i*52
-        box((762, y, 1216, y+42), '#28384F', 8)
-        d.ellipse((777, y+16, 787, y+26), fill=GREEN if scene != 2 or i == 2 else MUTED)
-        txt(800, y+11, row, 18)
-    status = ['Approaching school', 'Check in with selected children', 'Arrival accepted  /  position 03',
-              'Classroom call acknowledged', 'Confirm handoff', 'Handoff recorded'][scene]
-    if scene == 1 and u > .52:
-        status = 'Check-in accepted'
-    if scene == 4 and u > .62:
-        status = 'Staff confirmed handoff'
-    box((762, 507, 1216, 544), '#12574C' if scene == 5 or (scene in (1,4) and u > .62) else '#2563EB', 8)
-    txt(781, 516, status, 18, bold=True)
+    if scene in (0, 1):
+        # A fictional parent and readable phone UI make the check-in action explicit.
+        box((738, 202, 1240, 563), PANEL)
+        txt(757, 224, 'PARENT / GUARDIAN', 14, '#60A5FA', True)
+        # Parent portrait; the touch indicator below depicts interaction while parked.
+        d.ellipse((783, 279, 837, 337), fill='#DCA882')
+        d.pieslice((779, 269, 840, 320), 180, 355, fill='#302A35')
+        d.ellipse((793, 303, 797, 307), fill=NAVY)
+        d.ellipse((821, 303, 825, 307), fill=NAVY)
+        d.arc((800, 308, 819, 322), 10, 165, fill='#704330', width=2)
+        box((800, 329, 822, 349), '#DCA882', 6)
+        box((771, 344, 850, 412), '#2563EB', 26)
+        txt(780, 423, 'Jordan', 22, bold=True)
+        txt(770, 452, 'Family 1800', 16, MUTED)
+        step = 'Approaching' if scene == 0 else ('Select children' if u < .43 else 'Tap Check in' if u < .58 else 'Checking...' if u < .70 else 'You are checked in')
+        txt(755, 495, step, 16, GREEN if scene == 1 and u >= .70 else WHITE, True)
+        txt(755, 525, 'Parked to check in' if scene == 1 else 'Already signed in', 14, MUTED)
 
+        # Phone chassis, screen, and familiar native-app affordances.
+        box((927, 189, 1221, 572), '#020617', 30, '#475569')
+        box((939, 201, 1209, 560), '#F8FAFC', 22)
+        box((1038, 206, 1110, 214), '#020617', 4)
+        txt(954, 226, 'Driveline', 22, '#0F172A', True)
+        txt(1160, 233, '2:50', 14, '#64748B')
+        txt(954, 260, 'Maple Grove School', 16, '#334155', True)
+        txt(954, 282, 'Signed in / MFA verified', 14, '#64748B')
+        in_zone = scene == 1 or u > .78
+        box((951, 307, 1197, 333), '#DCFCE7' if in_zone else '#E2E8F0', 7)
+        txt(961, 313, 'Near school / Ready' if in_zone else 'Waiting for near-school presence', 14, '#166534' if in_zone else '#475569', True)
+        confirmed = scene == 1 and u >= .70
+        if confirmed:
+            d.ellipse((1048, 352, 1098, 402), fill='#10B981')
+            d.line([(1060, 377), (1070, 386), (1087, 366)], fill='white', width=4)
+            txt(984, 412, 'You are checked in', 22, '#0F172A', True)
+            txt(967, 443, 'Alex + Sam / Family 1800', 18, '#475569')
+            box((954, 476, 1194, 516), '#DBEAFE', 9)
+            txt(986, 487, 'Queue position: 03', 20, '#1D4ED8', True)
+            txt(979, 526, 'Please remain in your car', 14, '#64748B')
+        else:
+            for j, name in enumerate(('Alex Taylor', 'Sam Taylor')):
+                y = 343+j*58
+                selected = scene == 1 and u >= (.15 if j == 0 else .34)
+                box((951, y, 1197, y+51), '#EFF6FF' if selected else '#FFFFFF', 8, '#93C5FD' if selected else '#CBD5E1')
+                txt(963, y+6, name, 18, '#0F172A', True)
+                txt(963, y+29, f'1800/{j+1}  /  Eligible for pickup', 14, '#64748B')
+                box((1167, y+10, 1187, y+30), '#2563EB' if selected else '#FFFFFF', 4, '#2563EB' if selected else '#94A3B8')
+                if selected:
+                    d.line([(1171, y+20), (1176, y+25), (1183, y+15)], fill='white', width=2)
+            ready = scene == 1 and u >= .34
+            checking = scene == 1 and u >= .58
+            box((953, 476, 1195, 519), '#2563EB' if ready else '#CBD5E1', 10)
+            button = 'Verifying arrival...' if checking else 'Check in (2 children)' if ready else 'Select your children' if scene == 1 else 'Check in near school'
+            txt(969, 489, button, 18, '#FFFFFF' if ready else '#64748B', True)
+            txt(980, 535, 'One check-in for both children', 14, '#64748B')
+
+        # Moving fingertip and expanding touch rings demonstrate the actual taps.
+        if scene == 1 and u < .60:
+            beats = [(0.15, 1177, 363), (.34, 1177, 421), (.56, 1077, 497)]
+            for beat, tx, ty in beats:
+                dt = u-beat
+                if -.09 <= dt <= .065:
+                    approach = ease((dt+.09)/.09)
+                    fx, fy = tx+22*(1-approach), ty+30*(1-approach)
+                    if dt >= 0:
+                        radius = 9+dt*270
+                        d.ellipse((tx-radius, ty-radius, tx+radius, ty+radius), outline='#60A5FA', width=3)
+                    # A fingertip, palm, and blue cuff; keep tap targets visible.
+                    box((fx+5, fy+22, fx+39, fy+63), '#DCA882', 12, '#B77F59')
+                    box((fx-6, fy, fx+8, fy+44), '#EBC19E', 7, '#B77F59')
+                    box((fx+6, fy+55, fx+42, fy+70), '#2563EB', 4)
+                    break
+        box((1040, 551, 1109, 555), '#64748B', 2)
+    else:
+        box((738, 202, 1240, 563), PANEL)
+        txt(764, 224, role, 14, '#60A5FA', True)
+        txt(764, 256, heading, 28, bold=True)
+        txt(764, 297, detail, 18, MUTED)
+        for i, row in enumerate(rows):
+            y = 339+i*52
+            box((762, y, 1216, y+42), '#28384F', 8)
+            d.ellipse((777, y+16, 787, y+26), fill=GREEN if scene != 2 or i == 2 else MUTED)
+            txt(800, y+11, row, 18)
+        status = ['Approaching school', 'Check in with selected children', 'Arrival accepted  /  position 03',
+                  'Classroom call acknowledged', 'Confirm handoff', 'Handoff recorded'][scene]
+        if scene == 1 and u > .52:
+            status = 'Check-in accepted'
+        if scene == 4 and u > .62:
+            status = 'Staff confirmed handoff'
+        box((762, 507, 1216, 544), '#12574C' if scene == 5 or (scene in (1,4) and u > .62) else '#2563EB', 8)
+        txt(781, 516, status, 18, bold=True)
     txt(40, 590, caption, 20, '#E2E8F0')
     labels = ['Approach', 'Check in', 'Queue', 'Call', 'Handoff', 'Record']
     for i, label in enumerate(labels):
@@ -153,5 +225,5 @@ if __name__ == '__main__':
         if proc.poll() is None:
             proc.kill()
             proc.wait()
-    frame(25).save(OUT / 'driveline-simulation-poster.jpg', quality=92)
+    frame(14.5).save(OUT / 'driveline-simulation-poster.jpg', quality=92)
     print(target)
