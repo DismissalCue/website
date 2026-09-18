@@ -47,7 +47,7 @@ def ease(x):
     x = max(0, min(1, x))
     return x*x*(3-2*x)
 
-def frame(t):
+def workflow_frame(t):
     scene = min(5, int(t // 8))
     u = (t % 8) / 8
     title, subtitle, role, heading, detail, rows, caption = SCENES[scene]
@@ -207,8 +207,104 @@ def frame(t):
         im = Image.blend(Image.new('RGB', im.size, NAVY), im, fade)
     return im
 
+
+
+def opening_frame(t, zones=False):
+    im = Image.new('RGB', (1280, 720), NAVY)
+    d = ImageDraw.Draw(im)
+    def txt(x, y, text, size=20, color=WHITE, bold=False):
+        d.text((x, y), text, font=FONTS[size, bold], fill=color)
+    def box(bounds, fill=PANEL, radius=16, outline=None):
+        d.rounded_rectangle(bounds, radius=radius, fill=fill, outline=outline, width=2)
+    box((40, 28, 74, 62), BLUE, 9)
+    txt(49, 32, 'D', 24, bold=True)
+    txt(86, 31, 'Driveline', 28, bold=True)
+    box((936, 30, 1240, 62), '#25354C', 16)
+    txt(955, 38, 'SIMULATION  /  FICTIONAL DATA', 16, MUTED, True)
+    if not zones:
+        txt(40, 127, 'A calmer end to the school day.', 40, bold=True)
+        txt(42, 192, 'Long pickup lines. Repeated classroom calls.', 28, MUTED)
+        txt(42, 235, 'Designed to help schools coordinate pickup.', 24, '#93C5FD')
+        cards = [
+            ('01', 'Coordinate arrivals', 'One shared release queue.', '#3B82F6'),
+            ('02', 'Time classroom calls', 'Call when the car is closer.', '#34D399'),
+            ('03', 'Record every handoff', 'Staff stay in control.', '#A78BFA'),
+        ]
+        for i, (number, title, line, color) in enumerate(cards):
+            progress = ease((t-.7-i*.7)/.8)
+            x, y = 40+i*406, 338+int(30*(1-progress))
+            box((x, y, x+388, y+191), '#1E293B')
+            box((x+24, y+24, x+73, y+65), color, 10)
+            txt(x+34, y+32, number, 22, NAVY, True)
+            txt(x+24, y+87, title, 28, bold=True)
+            txt(x+24, y+132, line, 20, MUTED)
+        txt(42, 583, 'From the approaching parent to the staff-confirmed handoff.', 24, '#E2E8F0')
+        txt(42, 657, 'SEE THE PICKUP JOURNEY', 16, '#93C5FD', True)
+        box((42, 638, 1238, 642), '#334155', 2)
+        if t > .02: box((42, 638, 42+1196*min(1,t/10), 642), BLUE, 2)
+    else:
+        u = t/14
+        txt(40, 94, 'Two zones. Two different jobs.', 40, bold=True)
+        txt(41, 149, 'Prepare on approach. Check in near school.', 24, MUTED)
+        box((40, 202, 802, 584), '#15243A')
+        d.ellipse((120, 224, 760, 568), fill='#193354', outline='#3B82F6', width=3)
+        d.ellipse((325, 302, 555, 490), fill='#174C48', outline=GREEN, width=3)
+        txt(265, 248, 'APPROACH ZONE', 18, '#93C5FD', True)
+        txt(369, 312, 'ARRIVAL ZONE', 16, GREEN, True)
+        d.line((63, 449, 780, 449), fill='#475569', width=54)
+        for x in range(70, 778, 42):
+            d.line((x, 449, x+19, 449), fill='#CBD5E1', width=2)
+        box((387, 354, 493, 412), '#486180', 5)
+        d.polygon([(377, 354), (440, 329), (503, 354)], fill='#647D9E')
+        txt(401, 362, 'SCHOOL', 16, bold=True)
+        for x in (399, 421, 459, 480):
+            box((x, 386, x+10, 399), '#7DD3FC', 2)
+        box((439, 388, 451, 412), NAVY, 2)
+        if u < .42:
+            cx = 70+155*ease(u/.42)
+        elif u < .55:
+            cx = 225
+        else:
+            cx = 225+160*ease((u-.55)/.40)
+        box((cx-27, 431, cx+27, 467), BLUE, 9)
+        box((cx-9, 435, cx+10, 463), '#BFDBFE', 4)
+        for dx in (-18, 17):
+            box((cx+dx-4, 427, cx+dx+4, 434), '#020617', 2)
+            box((cx+dx-4, 463, cx+dx+4, 470), '#020617', 2)
+        box((cx-30, 480, cx+33, 503), BLUE, 6)
+        txt(cx-19, 483, '1800', 16, bold=True)
+        inner = cx >= 350
+        txt(179, 535, 'Near school: verify before check-in' if inner else 'Approaching: prepare the app', 22, GREEN if inner else '#93C5FD', True)
+        box((826, 202, 1240, 380), PANEL, 16, '#3B82F6' if not inner else None)
+        txt(850, 221, '01  APPROACH', 16, '#93C5FD', True)
+        txt(850, 250, '~800 m', 40, bold=True)
+        txt(850, 307, 'Prepare the app for arrival.', 22)
+        txt(850, 342, 'No check-in or classroom call yet.', 18, MUTED)
+        box((826, 399, 1240, 584), PANEL, 16, GREEN if inner else None)
+        txt(850, 418, '02  ARRIVAL', 16, GREEN, True)
+        txt(850, 448, '~150 m', 40, bold=True)
+        txt(850, 504, 'Near-school check-in.', 22)
+        txt(850, 542, 'Presence + pickup rights verified.', 18, MUTED)
+        txt(40, 606, 'Illustrative layout, not to scale. Zone distances are configured for each school.', 20, '#E2E8F0')
+        txt(40, 657, 'NEXT: THE PARENT CHECKS IN', 16, '#93C5FD', True)
+        box((40, 638, 1240, 642), '#334155', 2)
+        if t > .02: box((40, 638, 40+1200*min(1,u), 642), GREEN, 2)
+    fade = min(1, t/.3)
+    if fade < 1:
+        im = Image.blend(Image.new('RGB', im.size, NAVY), im, fade)
+    return im
+
+
+def frame(t):
+    # Ten-second benefit opener, fourteen-second zones explainer, forty-second workflow.
+    if t < 10:
+        return opening_frame(t)
+    if t < 24:
+        return opening_frame(t-10, zones=True)
+    return workflow_frame(t-16)
+
 if __name__ == '__main__':
-    fps, seconds = 24, 48
+    fps, seconds = 24, 64
     target = OUT / 'driveline-simulation-demo.mp4'
     command = ['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-vcodec', 'rawvideo',
                '-pix_fmt', 'rgb24', '-s', '1280x720', '-r', str(fps), '-i', '-', '-an',
@@ -225,5 +321,5 @@ if __name__ == '__main__':
         if proc.poll() is None:
             proc.kill()
             proc.wait()
-    frame(14.5).save(OUT / 'driveline-simulation-poster.jpg', quality=92)
+    frame(22.5).save(OUT / 'driveline-simulation-poster.jpg', quality=92)
     print(target)
