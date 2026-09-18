@@ -235,18 +235,6 @@
     background: var(--navy);
   }
 
-  .demo-description, .demo-transcript {
-    max-width: 900px;
-    margin: 1.5rem auto 0;
-    color: #CBD5E1;
-    line-height: 1.7;
-  }
-
-  .demo-description { text-align: center; }
-  .demo-description a { color: #93C5FD; }
-  .demo-transcript summary { cursor: pointer; color: white; }
-  .demo-transcript ol { padding-left: 1.5rem; margin-top: 1rem; }
-
   .section-label {
     font-size: 0.75rem;
     font-weight: 600;
@@ -562,35 +550,11 @@
       <video controls playsinline preload="metadata"
              width="1280" height="720"
              poster="media/driveline-simulation-poster.jpg"
-             aria-label="Driveline school pickup simulation"
-             aria-describedby="demo-description">
+             aria-label="Driveline school pickup simulation">
         <source src="media/driveline-simulation-demo.mp4" type="video/mp4">
         Your browser does not support embedded video.
-        <a href="media/driveline-simulation-demo.mp4">Download the simulation demo</a>.
       </video>
     </div>
-    <p class="demo-description" id="demo-description">
-      A 48-second simulation of the planned pickup workflow, using fictional people and a fictional campus.
-      Silent video with on-screen explanations.
-      <a href="media/driveline-simulation-demo.mp4" download>Download video</a>
-    </p>
-    <details class="demo-transcript">
-      <summary>Read the demo walkthrough</summary>
-      <ol>
-        <li><strong>Approach campus (0:00).</strong> Family 1800 approaches Maple Grove School.
-          The adult has signed in with MFA. Geofence entry wakes the app; near-school checks are still required.</li>
-        <li><strong>Check in (0:08).</strong> The adult selects Alex and Sam and confirms arrival once.
-          Fresh presence and pickup authorization checks must pass before check-in is accepted.</li>
-        <li><strong>Join the queue (0:16).</strong> Each child has one active pickup claim.
-          Authorized parents receive an arrival alert. Children stay in class while the family waits.</li>
-        <li><strong>Classroom call (0:24).</strong> As the car moves forward, the teacher receives and
-          acknowledges the call. The hallway display shows tag 1800.</li>
-        <li><strong>Staff handoff (0:32).</strong> Staff verify the authorized collector using the school's
-          physical release procedure and confirm the handoff. Arrival alone never releases a child.</li>
-        <li><strong>Pickup record (0:40).</strong> The record identifies the children, collector Jordan Taylor,
-          and confirming staff member Morgan. Parents receive a pickup notification.</li>
-      </ol>
-    </details>
   </div>
 </section>
 

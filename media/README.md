@@ -34,5 +34,6 @@ For a future page embed (paths relative to the website root):
 ```
 
 Created on 2026-09-17. Embedded in the homepage Watch Demo section with native
-playback controls, a download link, and an accessible text walkthrough. Published
+playback controls. The visible description, download link, and written walkthrough
+were removed at the user’s request; ElevenLabs narration is pending access. Published
 through the website repository’s existing GitHub Pages workflow.
