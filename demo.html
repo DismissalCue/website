@@ -844,7 +844,16 @@
 
     // Auto-start on load
     window.addEventListener('load', () => {
-      setTimeout(startDemo, 1200);
+      console.log('Demo loaded, starting in 1.2s...');
+      setTimeout(() => {
+        console.log('Starting demo now...');
+        startDemo();
+      }, 1200);
+    });
+
+    // Also try DOMContentLoaded as backup
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM ready');
     });
   </script>
 </body>

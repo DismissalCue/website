@@ -701,7 +701,7 @@
       <div class="step">
         <div class="step-num">4</div>
         <h4 class="step-title">Parents Notified</h4>
-        <p class="step-body">All authorized family members receive SMS confirmation with pickup time and staff member name. Complete audit trail stored for compliance.</p>
+        <p class="step-body">All authorized family members receive instant app notification with pickup time and staff member name. Complete audit trail stored for compliance.</p>
       </div>
     </div>
   </div>
@@ -764,14 +764,20 @@
 </style>
 
 <script>
+  let demoLoaded = false;
+
   function openDemo() {
     const modal = document.getElementById('demoModal');
     const iframe = document.getElementById('demoFrame');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // Reload iframe to restart demo
-    iframe.src = iframe.src;
+    // Only reload if already loaded before (to restart)
+    if (demoLoaded) {
+      iframe.src = 'demo.html';
+    } else {
+      demoLoaded = true;
+    }
   }
 
   function closeDemo() {
@@ -789,7 +795,7 @@
 
   // Close on Escape key
   document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' && document.getElementById('demoModal').classList.contains('active')) {
       closeDemo();
     }
   });
