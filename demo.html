@@ -716,21 +716,23 @@
         </div>
       </div>
 
-      <!-- Staff Phone -->
+      <!-- Classroom Phone -->
       <div class="phone staff-phone">
         <div class="phone-notch"></div>
         <div class="notification-badge">1</div>
         <div class="phone-screen">
-          <div class="phone-header">👨‍🏫 Staff Dashboard</div>
+          <div class="phone-header">🏫 Classroom Alert</div>
           <div class="phone-content">
-            <strong>New Pickup Request</strong><br>
+            <strong>Pickup Request</strong><br>
             Student: Emma Johnson<br>
-            Parent: Sarah Johnson<br>
-            Vehicle: Blue Toyota
+            Grade: 3rd<br>
+            <br>
+            <strong style="color: #2563EB;">Action Required:</strong><br>
+            Send student to pickup door
           </div>
           <div class="phone-status">
-            <div class="phone-status-title">🔔 Alert</div>
-            <div class="phone-status-text">Parent entered geofence at 3:24 PM</div>
+            <div class="phone-status-title">🔔 Notification</div>
+            <div class="phone-status-text">Parent in pickup zone</div>
           </div>
         </div>
       </div>
@@ -785,26 +787,26 @@
         parentStatus.textContent = 'Entered pickup zone! ✅';
       }, 2000);
 
-      // STEP 3: Staff notification (4-6s)
+      // STEP 3: Classroom notification (4-6s)
       setTimeout(() => {
-        statusText.textContent = '3️⃣ Staff receives instant notification!';
+        statusText.textContent = '3️⃣ Classroom receives notification!';
         staffPhone.style.animation = 'phone-slide-in 0.5s ease-out forwards';
-        staffStatus.textContent = 'Preparing Emma for pickup...';
+        staffStatus.textContent = 'Sending student to door...';
       }, 4500);
 
-      // STEP 4: Staff prepares student (6-8s)
+      // STEP 4: Student walks to door (6-8s)
       setTimeout(() => {
-        statusText.textContent = '4️⃣ Staff calls student for pickup...';
+        statusText.textContent = '4️⃣ Student walks to pickup door...';
         student.style.animation = 'walk-out 1.5s ease-in-out forwards';
         staff.style.animation = 'staff-walk 1.5s ease-in-out forwards';
-        staffStatus.textContent = 'Walking Emma to pickup point...';
+        staffStatus.textContent = 'Student en route to door...';
       }, 6500);
 
-      // STEP 5: Handoff (8-10s)
+      // STEP 5: Handoff at door (8-10s)
       setTimeout(() => {
-        statusText.textContent = '5️⃣ Safe handoff to authorized guardian!';
+        statusText.textContent = '5️⃣ Staff at door completes safe handoff!';
         parentStatus.textContent = 'Emma picked up! 🎉';
-        staffStatus.textContent = 'Handoff complete. Logged.';
+        staffStatus.textContent = 'Handoff logged.';
       }, 9500);
 
       // STEP 6: Departure (10-12s)
