@@ -1,4 +1,4 @@
-"""Generate the original Bella narration and timestamped captions for the cartoon.
+"""Generate the selected conversational narration and timestamped captions for the cartoon.
 
 ELEVENLABS_API_KEY is read only from the environment. One paid generation per uncached
 script. Provider audio/alignment is cached privately under .local/story. Pass FFMPEG.
@@ -17,15 +17,17 @@ def main():
     WORK.mkdir(parents=True,exist_ok=True)
     manifest=json.loads((MEDIA/'dismissalcue-story.json').read_text())
     full='\n\n'.join(s['text'] for s in manifest['scenes'])
-    payload={'text':full,'model_id':'eleven_multilingual_v2','voice_settings':{'stability':0.65,'similarity_boost':0.75,'style':0.15,'use_speaker_boost':True,'speed':1.0}}
-    fingerprint=hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest()
+    voice_id=manifest['voice_id']
+    if not re.fullmatch(r'[A-Za-z0-9_-]+',voice_id):raise RuntimeError('Invalid selected voice')
+    payload={'text':full,'model_id':'eleven_multilingual_v2','voice_settings':manifest['voice_settings']}
+    fingerprint=hashlib.sha256(json.dumps({'voice_id':voice_id,**payload},sort_keys=True).encode()).hexdigest()
     cache=WORK/(fingerprint+'.json')
     if not cache.exists():
         key=os.environ.get('ELEVENLABS_API_KEY','')
         if not key:raise RuntimeError('Narration credential is not configured')
         if not re.fullmatch(r'[A-Za-z0-9_-]+',key):raise RuntimeError('Invalid credential format')
         request_file=WORK/'request.json';request_file.write_text(json.dumps(payload))
-        response=subprocess.run(['curl','--silent','--show-error','--fail','--config','-','--max-time','120','--header','Content-Type: application/json','--data-binary','@'+str(request_file),'https://api.elevenlabs.io/v1/text-to-speech/hpp4J3VqNfWAUOO0d1Us/with-timestamps?output_format=mp3_44100_128'],input='header = "xi-api-key: '+key+'"\n',text=True,capture_output=True)
+        response=subprocess.run(['curl','--silent','--show-error','--fail','--config','-','--max-time','120','--header','Content-Type: application/json','--data-binary','@'+str(request_file),'https://api.elevenlabs.io/v1/text-to-speech/'+voice_id+'/with-timestamps?output_format=mp3_44100_128'],input='header = "xi-api-key: '+key+'"\n',text=True,capture_output=True)
         if response.returncode:raise RuntimeError('Narration generation failed; no published asset changed')
         data=response.stdout.encode()
         result=json.loads(data)
@@ -35,15 +37,15 @@ def main():
     if characters!=full:raise RuntimeError('Alignment text differs; review before rendering')
     starts=alignment['character_start_times_seconds'];ends=alignment['character_end_times_seconds']
     if len(starts)!=len(full) or len(ends)!=len(full):raise RuntimeError('Incomplete caption timing')
-    raw=WORK/'original-bella.mp3';raw.write_bytes(base64.b64decode(result['audio_base64'],validate=True))
-    decoded=WORK/'original-bella.wav'
+    raw=WORK/'selected-voice.mp3';raw.write_bytes(base64.b64decode(result['audio_base64'],validate=True))
+    decoded=WORK/'selected-voice.wav'
     run(['-i',str(raw),'-ar','48000','-ac','1','-c:a','pcm_s16le',str(decoded)])
     with wave.open(str(decoded)) as audio: pcm=audio.readframes(audio.getnframes())
     cursor=0;offset=0;captions=[];clips=[]
     for i,scene in enumerate(manifest['scenes']):
         text=scene['text'];first=full.index(text,cursor);last=first+len(text);cursor=last
         cut=max(0,starts[first]-0.08);finish=ends[last-1]+0.18
-        lead=0.25;tail=1.0 if i in (2,8) else 0.6
+        lead=0.45;tail=1.8 if i in (2,8) else 1.15
         duration=math.ceil((finish-cut+lead+tail)*30)/30
         scene.update(duration=duration,start=offset)
         clip=WORK/f'voice-{i+1:02}.wav'
@@ -69,5 +71,5 @@ def main():
     (MEDIA/'dismissalcue-story.json').write_text(json.dumps(manifest,indent=2)+'\n')
     (MEDIA/'dismissalcue-story.en.vtt').write_text('WEBVTT\n\n'+''.join(f'{stamp(c["start"])} --> {stamp(c["end"])}\n{c["text"]}\n\n' for c in captions).rstrip()+'\n')
     (MEDIA/'dismissalcue-story-transcript.txt').write_text(manifest['title']+'\nDismissalCue — product vision, in development\n\n'+'\n\n'.join(s['text'] for s in manifest['scenes'])+'\n')
-    print(f'Original Bella narration ready: {offset:.2f}s, {len(captions)} timestamped captions; cached generation.')
+    print(f'Conversational narration ready: {offset:.2f}s, {len(captions)} timestamped captions; cached generation.')
 if __name__=='__main__':main()

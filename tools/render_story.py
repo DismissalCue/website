@@ -79,6 +79,14 @@ def car(a,x,y,s=1,color=CORAL,phase=0,driver=True):
   q=phase*3;a.line([P(dx+8*math.cos(q),19+8*math.sin(q)),P(dx-8*math.cos(q),19-8*math.sin(q))],NAVY,max(1,int(2*s)))
  a.rect((*P(191,-18),*P(210,-7)),GOLD,r=3,width=1)
 
+def exhaust(a,x,y,t,strength=1):
+ # Light gray tailpipe wisps rise and disperse; illustrative, not measured emissions.
+ for n in range(5):
+  age=(t*.32+n*.2)%1;r=5+age*17
+  color=mix(rgb('#A6ABA8'),rgb(PAPER),1-strength*(1-age)*.52)
+  xx=x-age*62+math.sin(t+n)*4;yy=y-age*72
+  a.arc((xx-r,yy-r*.55,xx+r,yy+r*.55),25,285,color,2)
+
 def school(a,x,y,s=1,label='SCHOOL'):
  def P(dx,dy):return(x+dx*s,y+dy*s)
  a.poly([P(0,0),P(130,-45),P(260,0)],TEAL,width=3)
@@ -132,6 +140,8 @@ def frame(index,t,duration,title):
   for xx in [425,485,545]:a.oval((xx,280+math.sin(t*2+xx)*4,xx+10,290+math.sin(t*2+xx)*4),CORAL,None)
  elif index==1:
   school(a,740,294,1.12);a.line([(50,562),(1225,562)],'#DACFBB',3)
+  # Idling car beside the curb; teacher is near its rear tailpipe.
+  car(a,595,535,.88,BLUE,0);exhaust(a,592,548,t)
   weather=0 if t<weather_marks[0] else 1 if t<weather_marks[1] else 2;phase=(u*3)%1
   # Teacher stays recognizable as the weather changes around her.
   person(a,467+math.sin(t*1.2)*2,553,1.42,TEAL,2,'worried','umbrella',t,glasses=True)
@@ -172,11 +182,10 @@ def frame(index,t,duration,title):
   for row in range(3):
    for col in range(5):
     x=96+97*col;y=353+54*row;fill=MINT if (row+col)%3==0 else '#F2EADF';a.rect((x,y,x+66,y+37),fill,r=9,outline=None)
-  # Crescent is an optional school-local calendar cue, not an inferred lunar date.
-  a.oval((472,263,495,286),GOLD,None);a.oval((480,258,502,281),TEAL,None)
-  a.rect((168,413,419,470),CORAL,r=10,outline=None);a.text((293,441),'Club day · later pickup',19,NAVY,True,'mm')
+  a.rect((168,413,419,470),CORAL,r=10,outline=None);a.text((293,441),'Soccer Tue · Art Thu',19,NAVY,True,'mm')
+  a.rect((97,488,582,533),MINT,r=10,outline=None);a.text((339,510),'Early dismissal · whole school',21,TEAL,True,'mm')
   person(a,765,549,1.2,LAV,2,pose='phone',phase=t,hijab=True);person(a,899,552,.85,CORAL,1,pose='wave',phase=t);clock(a,1054,356,t*.12,63)
-  a.text((338,575),'Local Ramadan timing',21,TEAL,True,'mm');a.text((890,575),'Per-child club schedules',21,TEAL,True,'mm')
+  a.text((338,575),'Before a holiday weekend',21,TEAL,True,'mm');a.text((890,575),"Clubs: this child's later pickup",21,TEAL,True,'mm')
  elif index==6:
   person(a,277,559,1.45,CORAL,1,pose='phone',phase=t);person(a,1014,559,1.45,TEAL,2,pose='wave',phase=t,glasses=True)
   a.rect((470,230,811,532),PAPER,r=28,outline=TEAL,width=4);a.rect((495,252,786,312),MINT,r=15,outline=None);a.text((640,282),'School help',25,TEAL,True,'mm')
@@ -185,7 +194,8 @@ def frame(index,t,duration,title):
   dashed(a,(330,385),(455,385),t);dashed(a,(827,385),(953,385),t)
  elif index==7:
   school(a,505,242,1.34);sun(a,1134,253,t);tree(a,115,428,.93);a.rect((35,510,1245,575),'#DEE6D8',r=25,outline=None)
-  car(a,75+ease(u)*55,486,1.08,TEAL,t);car(a,889+ease(u)*65,486,1.02,CORAL,t)
+  car(a,75+ease(u)*155,486,1.08,TEAL,t);car(a,889+ease(u)*165,486,1.02,CORAL,t)
+  exhaust(a,73+ease(u)*155,500,t,max(.12,1-u));exhaust(a,887+ease(u)*165,500,t+.5,max(.12,1-u))
   person(a,530,552,1.08,TEAL,2,pose='wave',phase=t,glasses=True);person(a,666,551,.75,GOLD,1,pose='walk',phase=t*3);person(a,747,550,.78,CORAL,0,pose='wave',phase=t)
   a.oval((586,317,699,398),PAPER,TEAL,3);a.check(640,357,2)
  elif index==8:
@@ -217,8 +227,15 @@ def main():
  ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('manifest',type=Path);ap.add_argument('--output',type=Path,default=Path('.local/story/silent.mp4'));ap.add_argument('--poster',type=Path);ap.add_argument('--contact-sheet',type=Path);ap.add_argument('--fps',type=int,default=30);ap.add_argument('--preview-only',action='store_true');ap.add_argument('--no-captions',action='store_true',help='Render a caption-free alternate');args=ap.parse_args()
  data=json.loads(args.manifest.read_text());scenes=data['scenes'];captions=data.get('captions',[])
  global weather_marks
- cold=next((float(c['start'])-float(scenes[1].get('start',0)) for c in captions if c['text'].strip().lower()=='in the cold.'),3.72)
- heat=next((float(c['start'])-float(scenes[1].get('start',0)) for c in captions if c['text'].strip().lower()=='in the afternoon sun.'),4.753)
+ def phrase_time(phrase,fallback):
+  for c in captions:
+   text=c['text'].lower();offset=text.find(phrase)
+   if offset>=0:
+    # Caption chunks may contain all three weather phrases; interpolate within chunk.
+    return float(c['start'])-float(scenes[1].get('start',0))+(float(c['end'])-float(c['start']))*offset/max(1,len(text))
+  return fallback
+ cold=phrase_time('cold',3.72)
+ heat=phrase_time('hot afternoon',phrase_time('afternoon sun',4.753))
  weather_marks=(cold,heat)
  if len(scenes)!=9:raise ValueError('Story renderer needs exactly nine scenes')
  for i,s in enumerate(scenes):
