@@ -7,218 +7,218 @@
     {
       "title": "The afternoon pickup puzzle",
       "text": "It's the end of the school day. You're waiting in a long line of cars, watching the clock. Inside, the office is trying to work out who's arrived, and which children are going home.",
-      "duration": 11.2,
+      "duration": 9.733333333333333,
       "start": 0
     },
     {
       "title": "Every day. Every kind of weather.",
       "text": "And out there is a teacher, helping everyone along. Through the rain, the cold, or another hot afternoon. Beside those idling cars, there's exhaust to breathe in, too. What if better coordination meant less time standing beside those tailpipes?",
-      "duration": 19.633333333333333,
-      "start": 11.2
+      "duration": 15.333333333333334,
+      "start": 9.733333333333333
     },
     {
       "title": "Does this sound familiar?",
       "text": "Does this sound familiar?",
-      "duration": 3.8666666666666667,
-      "start": 30.833333333333332
+      "duration": 2.3666666666666667,
+      "start": 25.066666666666666
     },
     {
       "title": "Meet DismissalCue",
       "text": "That's why we're building DismissalCue. To help families and schools stay connected, from the moment a parent arrives to the moment a child heads home.",
-      "duration": 12.033333333333333,
-      "start": 34.699999999999996
+      "duration": 8.933333333333334,
+      "start": 27.433333333333334
     },
     {
       "title": "One family. A coordinated pickup.",
       "text": "Picture checking in for your children together. The school sees who's here, checks pickup permissions, and calls the right children. Staff still confirm the handoff, in person.",
-      "duration": 14.333333333333334,
-      "start": 46.73333333333333
+      "duration": 10.8,
+      "start": 36.36666666666667
     },
     {
       "title": "A pickup plan for every child.",
       "text": "And pickup doesn't have to look the same for every child. Soccer on Tuesdays? Art club on Thursdays? The school sets each child's pickup time. Or, before a holiday weekend, it can schedule an earlier dismissal for the whole school.",
-      "duration": 19.8,
-      "start": 61.06666666666666
+      "duration": 15.233333333333333,
+      "start": 47.16666666666667
     },
     {
       "title": "Keep everyone in the loop.",
       "text": "Parents get clear updates about those plans. Staff have a shared picture of what's happening. And when someone needs help, they know which school office to contact.",
-      "duration": 13.3,
-      "start": 80.86666666666666
+      "duration": 10.4,
+      "start": 62.400000000000006
     },
     {
       "title": "Support the people who care.",
       "text": "It's about less confusion, and better support for the people looking after our children.",
-      "duration": 7.133333333333334,
-      "start": 94.16666666666666
+      "duration": 5.533333333333333,
+      "start": 72.80000000000001
     },
     {
       "title": "Let's make pickup better.",
       "text": "Would this make a difference at your school? Talk to your principal, your district, or your school board about DismissalCue. Let's make the end of the school day better, together.",
-      "duration": 16.233333333333334,
-      "start": 101.3
+      "duration": 13.166666666666666,
+      "start": 78.33333333333334
     }
   ],
-  "duration": 117.53333333333333,
+  "duration": 91.50000000000001,
   "captions": [
     {
-      "start": 0.45,
-      "end": 1.754,
+      "start": 0.2,
+      "end": 1.6669999999999998,
       "text": "It's the end of the school day."
     },
     {
-      "start": 1.901,
-      "end": 4.808000000000001,
+      "start": 1.698,
+      "end": 4.36,
       "text": "You're waiting in a long line of cars, watching the clock."
     },
     {
-      "start": 5.361,
-      "end": 8.777999999999999,
+      "start": 4.844,
+      "end": 8.017,
       "text": "Inside, the office is trying to work out who's arrived, and which"
     },
     {
-      "start": 8.728,
-      "end": 9.973999999999998,
+      "start": 7.979,
+      "end": 9.270999999999999,
       "text": "children are going home."
     },
     {
-      "start": 11.729999999999997,
-      "end": 14.44,
+      "start": 10.01333333333333,
+      "end": 12.629333333333332,
       "text": "And out there is a teacher, helping everyone along."
     },
     {
-      "start": 14.806999999999999,
-      "end": 18.457,
+      "start": 12.892333333333331,
+      "end": 16.170333333333335,
       "text": "Through the rain, the cold, or another hot afternoon."
     },
     {
-      "start": 19.009999999999998,
-      "end": 23.496,
+      "start": 16.654333333333334,
+      "end": 20.43133333333333,
       "text": "Beside those idling cars, there's exhaust to breathe in, too."
     },
     {
-      "start": 24.281,
-      "end": 28.603999999999996,
+      "start": 21.008333333333333,
+      "end": 23.728333333333328,
       "text": "What if better coordination meant less time standing beside those"
     },
     {
-      "start": 28.53,
-      "end": 29.602,
+      "start": 23.65533333333333,
+      "end": 24.59933333333333,
       "text": "tailpipes?"
     },
     {
-      "start": 31.36333333333333,
-      "end": 32.81833333333333,
+      "start": 25.346666666666664,
+      "end": 26.557666666666666,
       "text": "Does this sound familiar?"
     },
     {
-      "start": 35.230000000000004,
-      "end": 37.974,
+      "start": 27.713333333333328,
+      "end": 29.656333333333336,
       "text": "That's why we're building DismissalCue."
     },
     {
-      "start": 38.423,
-      "end": 42.43200000000001,
+      "start": 29.97733333333333,
+      "end": 33.25533333333333,
       "text": "To help families and schools stay connected, from the moment a"
     },
     {
-      "start": 42.417,
-      "end": 45.50900000000001,
+      "start": 33.216333333333324,
+      "end": 35.87933333333333,
       "text": "parent arrives to the moment a child heads home."
     },
     {
-      "start": 47.26333333333333,
-      "end": 50.19233333333332,
+      "start": 36.64666666666667,
+      "end": 38.71766666666666,
       "text": "Picture checking in for your children together."
     },
     {
-      "start": 50.560333333333325,
-      "end": 55.25433333333332,
+      "start": 39.10866666666667,
+      "end": 42.513666666666666,
       "text": "The school sees who's here, checks pickup permissions, and calls"
     },
     {
-      "start": 55.20433333333333,
-      "end": 56.32233333333333,
+      "start": 42.42866666666668,
+      "end": 43.349666666666664,
       "text": "the right children."
     },
     {
-      "start": 56.65533333333334,
-      "end": 59.840333333333334,
+      "start": 43.61266666666668,
+      "end": 46.68166666666666,
       "text": "Staff still confirm the handoff, in person."
     },
     {
-      "start": 61.596666666666664,
-      "end": 64.56166666666667,
+      "start": 47.44666666666667,
+      "end": 50.01566666666667,
       "text": "And pickup doesn't have to look the same for every child."
     },
     {
-      "start": 65.17266666666666,
-      "end": 66.87166666666667,
+      "start": 50.59266666666667,
+      "end": 52.01266666666667,
       "text": "Soccer on Tuesdays?"
     },
     {
-      "start": 67.48266666666666,
-      "end": 69.43766666666667,
+      "start": 52.27566666666668,
+      "end": 53.95166666666666,
       "text": "Art club on Thursdays?"
     },
     {
-      "start": 70.30466666666666,
-      "end": 73.11866666666667,
+      "start": 54.272666666666666,
+      "end": 56.49466666666667,
       "text": "The school sets each child's pickup time."
     },
     {
-      "start": 73.62466666666666,
-      "end": 78.31966666666668,
+      "start": 56.97866666666668,
+      "end": 60.91766666666667,
       "text": "Or, before a holiday weekend, it can schedule an earlier dismissal"
     },
     {
-      "start": 78.28066666666666,
-      "end": 79.64266666666668,
+      "start": 60.855666666666664,
+      "end": 61.93966666666666,
       "text": "for the whole school."
     },
     {
-      "start": 81.39666666666665,
-      "end": 84.18666666666667,
+      "start": 62.680000000000014,
+      "end": 65.191,
       "text": "Parents get clear updates about those plans."
     },
     {
-      "start": 84.97266666666667,
-      "end": 87.82066666666668,
+      "start": 65.67500000000001,
+      "end": 68.094,
       "text": "Staff have a shared picture of what's happening."
     },
     {
-      "start": 88.13066666666666,
-      "end": 92.95266666666666,
+      "start": 68.41500000000002,
+      "end": 72.33100000000002,
       "text": "And when someone needs help, they know which school office to contact."
     },
     {
-      "start": 94.69666666666664,
-      "end": 98.84566666666665,
+      "start": 73.08000000000001,
+      "end": 76.845,
       "text": "It's about less confusion, and better support for the people looking"
     },
     {
-      "start": 98.79566666666666,
-      "end": 100.08766666666666,
+      "start": 76.77100000000002,
+      "end": 77.85500000000002,
       "text": "after our children."
     },
     {
-      "start": 101.83,
-      "end": 104.44600000000001,
+      "start": 78.61333333333334,
+      "end": 80.67233333333334,
       "text": "Would this make a difference at your school?"
     },
     {
-      "start": 105.359,
-      "end": 110.355,
+      "start": 81.66633333333334,
+      "end": 86.19833333333335,
       "text": "Talk to your principal, your district, or your school board about"
     },
     {
-      "start": 110.317,
-      "end": 111.783,
+      "start": 86.14833333333334,
+      "end": 87.37133333333333,
       "text": "DismissalCue."
     },
     {
-      "start": 112.44100000000002,
-      "end": 115.66099999999999,
+      "start": 87.94833333333332,
+      "end": 90.63333333333333,
       "text": "Let's make the end of the school day better, together."
     }
   ],
@@ -228,6 +228,6 @@
     "similarity_boost": 0.75,
     "style": 0.05,
     "use_speaker_boost": true,
-    "speed": 0.9
+    "speed": 1.0
   }
 }

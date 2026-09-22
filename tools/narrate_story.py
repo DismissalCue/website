@@ -45,7 +45,7 @@ def main():
     for i,scene in enumerate(manifest['scenes']):
         text=scene['text'];first=full.index(text,cursor);last=first+len(text);cursor=last
         cut=max(0,starts[first]-0.08);finish=ends[last-1]+0.18
-        lead=0.45;tail=1.8 if i in (2,8) else 1.15
+        lead=0.2;tail=0.8 if i in (2,8) else 0.4
         duration=math.ceil((finish-cut+lead+tail)*30)/30
         scene.update(duration=duration,start=offset)
         clip=WORK/f'voice-{i+1:02}.wav'

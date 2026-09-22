@@ -73,7 +73,7 @@ as requested. Optional captions are available through the video controls.
 
 ## Additional cartoon story — 2026-09-22
 
-`dismissalcue-story.mp4` is a separate 117.53-second, 1280×720, 30fps H.264/AAC
+`dismissalcue-story.mp4` is a separate 91.50-second, 1280×720, 30fps H.264/AAC
 animated explainer. The original walkthrough is retained. Original vector-like
 Pillow artwork shows a pickup line, a teacher in rain/cold/sun, coordinated school
 roles, approved siblings/physical handoff, per-child weekday clubs and school-wide early dismissal before a holiday weekend, school help, and a district/board call to action. Characters are
@@ -81,9 +81,9 @@ fictional. No customer testimony, measured time saving or certification is claim
 Feature scenes are labeled **Product vision · In development** and the narration
 says “we’re building.” It does not advertise a completed or currently deployed product.
 
-The revised film uses Chris, a conversational American voice, at0.9 speed with
-stability0.45, similarity0.75 and style0.05. Natural sentences and longer scene pauses
-replace the earlier brisk delivery. The script includes exhaust from idling cars
+The revised film uses Chris, a conversational American voice, at normal1.0 speed with
+stability0.45, similarity0.75 and style0.05. Natural sentences and short breathing pauses balance the earlier brisk delivery
+and the slower first revision. The script includes exhaust from idling cars
 and asks whether better coordination could reduce time beside tailpipes; it does
 not claim measured exposure reduction or eliminated emissions. The original
 walkthrough retains Bella. Timestamped speech is cached by voice/script/settings
