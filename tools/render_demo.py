@@ -277,12 +277,12 @@ def opening_frame(t, zones=False):
         txt(179, 535, 'Near school: verify before check-in' if inner else 'Approaching: prepare the app', 22, GREEN if inner else '#93C5FD', True)
         box((826, 202, 1240, 380), PANEL, 16, '#3B82F6' if not inner else None)
         txt(850, 221, '01  APPROACH', 16, '#93C5FD', True)
-        txt(850, 250, '~800 m', 40, bold=True)
+        txt(850, 250, '~1/2 mile', 40, bold=True)
         txt(850, 307, 'Prepare the app for arrival.', 22)
         txt(850, 342, 'No check-in or classroom call yet.', 18, MUTED)
         box((826, 399, 1240, 584), PANEL, 16, GREEN if inner else None)
         txt(850, 418, '02  ARRIVAL', 16, GREEN, True)
-        txt(850, 448, '~150 m', 40, bold=True)
+        txt(850, 448, '~500 feet', 40, bold=True)
         txt(850, 504, 'Near-school check-in.', 22)
         txt(850, 542, 'Presence + pickup rights verified.', 18, MUTED)
         txt(40, 606, 'Illustrative layout, not to scale. Zone distances are configured for each school.', 20, '#E2E8F0')
@@ -306,7 +306,7 @@ def frame(t):
 if __name__ == '__main__':
     fps, seconds = 24, 64
     target = OUT / 'driveline-simulation-demo.mp4'
-    command = ['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-vcodec', 'rawvideo',
+    command = [os.environ.get('FFMPEG', 'ffmpeg'), '-y', '-loglevel', 'error', '-f', 'rawvideo', '-vcodec', 'rawvideo',
                '-pix_fmt', 'rgb24', '-s', '1280x720', '-r', str(fps), '-i', '-', '-an',
                '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p',
                '-movflags', '+faststart', str(target)]
