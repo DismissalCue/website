@@ -67,7 +67,7 @@ def main():
     run(['-f','concat','-safe','0','-i',str(listing),'-af','loudnorm=I=-16:TP=-1.5:LRA=11','-ar','48000',str(WORK/'narration.wav')])
     manifest['duration']=offset;manifest['captions']=captions
     (MEDIA/'dismissalcue-story.json').write_text(json.dumps(manifest,indent=2)+'\n')
-    (MEDIA/'dismissalcue-story.en.vtt').write_text('WEBVTT\n\n'+''.join(f'{stamp(c["start"])} --> {stamp(c["end"])}\n{c["text"]}\n\n' for c in captions))
+    (MEDIA/'dismissalcue-story.en.vtt').write_text('WEBVTT\n\n'+''.join(f'{stamp(c["start"])} --> {stamp(c["end"])}\n{c["text"]}\n\n' for c in captions).rstrip()+'\n')
     (MEDIA/'dismissalcue-story-transcript.txt').write_text(manifest['title']+'\nDismissalCue — product vision, in development\n\n'+'\n\n'.join(s['text'] for s in manifest['scenes'])+'\n')
     print(f'Original Bella narration ready: {offset:.2f}s, {len(captions)} timestamped captions; cached generation.')
 if __name__=='__main__':main()
