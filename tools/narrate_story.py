@@ -35,17 +35,20 @@ def main():
         cache.write_bytes(data);cache.chmod(0o600)
     result=json.loads(cache.read_text());alignment=result['alignment'];characters=''.join(alignment['characters'])
     if characters!=full:raise RuntimeError('Alignment text differs; review before rendering')
-    starts=alignment['character_start_times_seconds'];ends=alignment['character_end_times_seconds']
+    tempo=float(manifest.get('narration_tempo',1.0))
+    if not 0.9<=tempo<=1.2:raise RuntimeError('Narration tempo outside reviewed range')
+    starts=[t/tempo for t in alignment['character_start_times_seconds']]
+    ends=[t/tempo for t in alignment['character_end_times_seconds']]
     if len(starts)!=len(full) or len(ends)!=len(full):raise RuntimeError('Incomplete caption timing')
     raw=WORK/'selected-voice.mp3';raw.write_bytes(base64.b64decode(result['audio_base64'],validate=True))
     decoded=WORK/'selected-voice.wav'
-    run(['-i',str(raw),'-ar','48000','-ac','1','-c:a','pcm_s16le',str(decoded)])
+    run(['-i',str(raw),'-af',f'atempo={tempo}','-ar','48000','-ac','1','-c:a','pcm_s16le',str(decoded)])
     with wave.open(str(decoded)) as audio: pcm=audio.readframes(audio.getnframes())
     cursor=0;offset=0;captions=[];clips=[]
     for i,scene in enumerate(manifest['scenes']):
         text=scene['text'];first=full.index(text,cursor);last=first+len(text);cursor=last
         cut=max(0,starts[first]-0.08);finish=ends[last-1]+0.18
-        lead=0.2;tail=0.8 if i in (2,8) else 0.4
+        lead=0.15;tail=0.6 if i in (2,8) else 0.25
         duration=math.ceil((finish-cut+lead+tail)*30)/30
         scene.update(duration=duration,start=offset)
         clip=WORK/f'voice-{i+1:02}.wav'
@@ -67,6 +70,9 @@ def main():
         offset+=duration
     listing=WORK/'clips.txt';listing.write_text(''.join("file '"+str(p)+"'\n" for p in clips))
     run(['-f','concat','-safe','0','-i',str(listing),'-af','loudnorm=I=-16:TP=-1.5:LRA=11','-ar','48000',str(WORK/'narration.wav')])
+    # Prevent adjacent caption cues from overlapping after timing adjustment.
+    for current,following in zip(captions,captions[1:]):
+        current['end']=min(current['end'],following['start'])
     manifest['duration']=offset;manifest['captions']=captions
     (MEDIA/'dismissalcue-story.json').write_text(json.dumps(manifest,indent=2)+'\n')
     (MEDIA/'dismissalcue-story.en.vtt').write_text('WEBVTT\n\n'+''.join(f'{stamp(c["start"])} --> {stamp(c["end"])}\n{c["text"]}\n\n' for c in captions).rstrip()+'\n')
