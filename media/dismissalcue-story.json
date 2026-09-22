@@ -1,0 +1,225 @@
+{
+  "title": "Does this sound familiar?",
+  "brand": "DismissalCue",
+  "status": "Product vision \u2014 in development",
+  "voice": "Original Bella",
+  "scenes": [
+    {
+      "title": "The afternoon pickup puzzle",
+      "text": "Three o'clock. A line of cars. A parent watching the clock. And a school office trying to answer: Who's here? Who's picking up? Which child is staying late?",
+      "duration": 10.8,
+      "start": 0
+    },
+    {
+      "title": "Every day. Every kind of weather.",
+      "text": "Outside, a teacher keeps the line moving. In the rain. In the cold. In the afternoon sun. They deserve better tools, and a little less shouting across the parking lot.",
+      "duration": 10.833333333333334,
+      "start": 10.8
+    },
+    {
+      "title": "Does this sound familiar?",
+      "text": "Does this sound familiar?",
+      "duration": 2.8,
+      "start": 21.633333333333333
+    },
+    {
+      "title": "Meet DismissalCue",
+      "text": "Meet DismissalCue. We're building a calmer, more connected way to get every school day home.",
+      "duration": 6.833333333333333,
+      "start": 24.433333333333334
+    },
+    {
+      "title": "One family. A coordinated pickup.",
+      "text": "Imagine one check-in for eligible siblings, approved pickup permissions, and clear calls to staff. Your school stays in charge of the physical handoff.",
+      "duration": 10.0,
+      "start": 31.266666666666666
+    },
+    {
+      "title": "Your school. Your schedule.",
+      "text": "School-set schedules. Local Ramadan timing. After-school clubs on the right days, for the right child. A later pickup shouldn't come as a surprise.",
+      "duration": 10.2,
+      "start": 41.266666666666666
+    },
+    {
+      "title": "Keep everyone in the loop.",
+      "text": "Clear updates for families. A shared view for staff. And school-specific help when an account or a pickup needs attention.",
+      "duration": 8.7,
+      "start": 51.46666666666667
+    },
+    {
+      "title": "Support the people who care.",
+      "text": "Less guesswork. Better coordination. More support for the people who care for our children.",
+      "duration": 6.466666666666667,
+      "start": 60.16666666666667
+    },
+    {
+      "title": "Let's make pickup better.",
+      "text": "It's time for a better pickup. Talk to your school, district, or school board about DismissalCue. Help bring a calmer dismissal to your community.",
+      "duration": 10.1,
+      "start": 66.63333333333334
+    }
+  ],
+  "duration": 76.73333333333333,
+  "captions": [
+    {
+      "start": 0.25,
+      "end": 1.299,
+      "text": "Three o'clock."
+    },
+    {
+      "start": 1.295,
+      "end": 2.553,
+      "text": "A line of cars."
+    },
+    {
+      "start": 2.584,
+      "end": 4.306,
+      "text": "A parent watching the clock."
+    },
+    {
+      "start": 4.267,
+      "end": 7.348,
+      "text": "And a school office trying to answer: Who's here?"
+    },
+    {
+      "start": 7.274,
+      "end": 8.415999999999999,
+      "text": "Who's picking up?"
+    },
+    {
+      "start": 8.412,
+      "end": 10.133999999999999,
+      "text": "Which child is staying late?"
+    },
+    {
+      "start": 11.129999999999999,
+      "end": 13.572000000000001,
+      "text": "Outside, a teacher keeps the line moving."
+    },
+    {
+      "start": 13.579,
+      "end": 14.524,
+      "text": "In the rain."
+    },
+    {
+      "start": 14.52,
+      "end": 15.522,
+      "text": "In the cold."
+    },
+    {
+      "start": 15.553,
+      "end": 17.032,
+      "text": "In the afternoon sun."
+    },
+    {
+      "start": 17.121000000000002,
+      "end": 20.062,
+      "text": "They deserve better tools, and a little less shouting across the"
+    },
+    {
+      "start": 19.977,
+      "end": 20.956000000000003,
+      "text": "parking lot."
+    },
+    {
+      "start": 21.96333333333333,
+      "end": 23.372333333333327,
+      "text": "Does this sound familiar?"
+    },
+    {
+      "start": 24.763333333333332,
+      "end": 26.11333333333333,
+      "text": "Meet DismissalCue."
+    },
+    {
+      "start": 26.80633333333333,
+      "end": 29.817333333333337,
+      "text": "We're building a calmer, more connected way to get every school"
+    },
+    {
+      "start": 29.75533333333333,
+      "end": 30.595333333333336,
+      "text": "day home."
+    },
+    {
+      "start": 31.596666666666664,
+      "end": 35.94266666666666,
+      "text": "Imagine one check-in for eligible siblings, approved pickup permissions,"
+    },
+    {
+      "start": 35.891666666666666,
+      "end": 37.62566666666666,
+      "text": "and clear calls to staff."
+    },
+    {
+      "start": 37.946666666666665,
+      "end": 40.597666666666655,
+      "text": "Your school stays in charge of the physical handoff."
+    },
+    {
+      "start": 41.596666666666664,
+      "end": 43.00466666666666,
+      "text": "School-set schedules."
+    },
+    {
+      "start": 43.12866666666666,
+      "end": 44.65366666666666,
+      "text": "Local Ramadan timing."
+    },
+    {
+      "start": 44.77766666666666,
+      "end": 48.148666666666664,
+      "text": "After-school clubs on the right days, for the right child."
+    },
+    {
+      "start": 48.353666666666655,
+      "end": 50.795666666666655,
+      "text": "A later pickup shouldn't come as a surprise."
+    },
+    {
+      "start": 51.79666666666667,
+      "end": 53.72766666666667,
+      "text": "Clear updates for families."
+    },
+    {
+      "start": 53.81666666666668,
+      "end": 55.666666666666664,
+      "text": "A shared view for staff."
+    },
+    {
+      "start": 55.79066666666667,
+      "end": 59.48666666666666,
+      "text": "And school-specific help when an account or a pickup needs attention."
+    },
+    {
+      "start": 60.49666666666668,
+      "end": 61.602666666666664,
+      "text": "Less guesswork."
+    },
+    {
+      "start": 61.69166666666667,
+      "end": 63.112666666666655,
+      "text": "Better coordination."
+    },
+    {
+      "start": 63.166666666666664,
+      "end": 65.96866666666668,
+      "text": "More support for the people who care for our children."
+    },
+    {
+      "start": 66.96333333333334,
+      "end": 68.68533333333335,
+      "text": "It's time for a better pickup."
+    },
+    {
+      "start": 68.89033333333333,
+      "end": 72.62133333333333,
+      "text": "Talk to your school, district, or school board about DismissalCue."
+    },
+    {
+      "start": 72.82633333333334,
+      "end": 75.66333333333336,
+      "text": "Help bring a calmer dismissal to your community."
+    }
+  ]
+}

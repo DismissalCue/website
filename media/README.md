@@ -70,3 +70,49 @@ API reference: https://elevenlabs.io/docs/api-reference/text-to-speech/convert
 Published through the website repository's existing GitHub Pages workflow.
 The visible description, download link, and written walkthrough remain removed
 as requested. Optional captions are available through the video controls.
+
+## Additional cartoon story — 2026-09-22
+
+`dismissalcue-story.mp4` is a separate 76.73-second, 1280×720, 30fps H.264/AAC
+animated explainer. The original walkthrough is retained. Original vector-like
+Pillow artwork shows a pickup line, a teacher in rain/cold/sun, coordinated school
+roles, approved siblings/physical handoff, school calendars/local Ramadan and
+weekday clubs, school help, and a district/board call to action. Characters are
+fictional. No customer testimony, measured time saving or certification is claimed.
+Feature scenes are labeled **Product vision · In development** and the narration
+says “we’re building.” It does not advertise a completed or currently deployed product.
+
+The original Bella voice uses the same voice/model/settings as the walkthrough.
+One timestamped ElevenLabs request generated the entire 181-word script; the response
+is cached privately by script/settings hash, so rerendering did not regenerate speech.
+Decoded PCM is cut/padded to exact scene sample counts. Narration is normalized to
+−16 LUFS with a −1.5 dBTP target; no licensed third-party music/art is included.
+Burned captions support muted playback; the separate VTT and `story.html` transcript
+provide accessible alternatives. Provider character timing drives the caption cues.
+
+Sources and retained outputs:
+
+- `dismissalcue-story.json`: editable script, scene durations and captions.
+- `dismissalcue-story.en.vtt`, `dismissalcue-story-transcript.txt`: text alternatives.
+- `dismissalcue-story-poster.jpg`: poster.
+- `../tools/render_story.py`: deterministic original animation, no external image assets.
+- `../tools/narrate_story.py`: explicit paid narration generation with private cache.
+
+Render without generating voice:
+
+```sh
+python3 tools/render_story.py media/dismissalcue-story.json --output .local/story/silent.mp4
+```
+
+Set `FFMPEG` if needed and install Pillow. To generate narration for a changed script,
+set `ELEVENLABS_API_KEY` securely in the process environment and run
+`python3 tools/narrate_story.py`. Never place credentials in command arguments or Git.
+The script uses [ElevenLabs timestamped speech](https://elevenlabs.io/docs/api-reference/text-to-speech/convert-with-timestamps).
+Mux `.local/story/silent.mp4` with `.local/story/narration.wav` using H.264 stream copy,
+AAC160k and `+faststart`. For a visual-only rerender, reuse the audio track from the
+retained final video instead of spending generation credits.
+
+Validation: complete decoded-video/audio check, exact timeline/caption bounds,
+nine-scene contact-sheet inspection and responsive Chrome checks at390/1280px,
+including real video playback, no autoplay, transcript expansion and preservation
+of the original video. This is content/browser QA, not school-product acceptance.
