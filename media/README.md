@@ -81,7 +81,7 @@ fictional. No customer testimony, measured time saving or certification is claim
 Feature scenes are labeled **Product vision · In development** and the narration
 says “we’re building.” It does not advertise a completed or currently deployed product.
 
-The revised film uses Chris, a conversational American voice, at a natural 1.16x
+The revised film uses Chris, a conversational American voice, at a natural 1.20x
 playback pace with stability0.45, similarity0.75 and style0.05. Short breathing
 pauses keep the delivery human while removing the slow gaps in the previous cut.
 The script includes exhaust from idling cars
