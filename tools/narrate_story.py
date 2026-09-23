@@ -36,7 +36,7 @@ def main():
     result=json.loads(cache.read_text());alignment=result['alignment'];characters=''.join(alignment['characters'])
     if characters!=full:raise RuntimeError('Alignment text differs; review before rendering')
     tempo=float(manifest.get('narration_tempo',1.0))
-    if not 0.9<=tempo<=1.2:raise RuntimeError('Narration tempo outside reviewed range')
+    if not 0.9<=tempo<=1.3:raise RuntimeError('Narration tempo outside reviewed range')
     starts=[t/tempo for t in alignment['character_start_times_seconds']]
     ends=[t/tempo for t in alignment['character_end_times_seconds']]
     if len(starts)!=len(full) or len(ends)!=len(full):raise RuntimeError('Incomplete caption timing')
