@@ -1,0 +1,234 @@
+{
+  "title": "Does this sound familiar?",
+  "brand": "DismissalCue",
+  "status": "Product vision \u2014 in development",
+  "voice": "Chris \u2014 conversational American",
+  "scenes": [
+    {
+      "title": "The afternoon pickup puzzle",
+      "text": "It's the end of the school day. You're waiting in a long line of cars, watching the clock. Inside, the office is trying to work out who's arrived, and which children are going home.",
+      "duration": 8.2,
+      "start": 0
+    },
+    {
+      "title": "Every day. Every kind of weather.",
+      "text": "And out there is a teacher, helping everyone along. Through the rain, the cold, or another hot afternoon. Beside those idling cars, there's exhaust to breathe in, too. What if better coordination meant less time standing beside those tailpipes?",
+      "duration": 13.033333333333333,
+      "start": 8.2
+    },
+    {
+      "title": "Does this sound familiar?",
+      "text": "Does this sound familiar?",
+      "duration": 1.7666666666666666,
+      "start": 21.233333333333334
+    },
+    {
+      "title": "Meet DismissalCue",
+      "text": "That's why we're building DismissalCue. To help families and schools stay connected, from the moment a parent arrives to the moment a child heads home.",
+      "duration": 7.5,
+      "start": 23.0
+    },
+    {
+      "title": "One family. A coordinated pickup.",
+      "text": "Picture checking in for your children together. The school sees who's here, checks pickup permissions, and calls the right children. Staff still confirm the handoff, in person.",
+      "duration": 9.1,
+      "start": 30.5
+    },
+    {
+      "title": "A pickup plan for every child.",
+      "text": "And pickup doesn't have to look the same for every child. Soccer on Tuesdays? Art club on Thursdays? The school sets each child's pickup time. Or, before a holiday weekend, it can schedule an earlier dismissal for the whole school.",
+      "duration": 12.933333333333334,
+      "start": 39.6
+    },
+    {
+      "title": "Keep everyone in the loop.",
+      "text": "Parents get clear updates about those plans. Staff have a shared picture of what's happening. And when someone needs help, they know which school office to contact.",
+      "duration": 8.766666666666667,
+      "start": 52.53333333333333
+    },
+    {
+      "title": "Support the people who care.",
+      "text": "It's about less confusion, and better support for the people looking after our children.",
+      "duration": 4.566666666666666,
+      "start": 61.3
+    },
+    {
+      "title": "Let's make pickup better.",
+      "text": "Would this make a difference at your school? Talk to your principal, your district, or your school board about DismissalCue. Let's make the end of the school day better, together.",
+      "duration": 11.1,
+      "start": 65.86666666666666
+    }
+  ],
+  "duration": 76.96666666666665,
+  "captions": [
+    {
+      "start": 0.1,
+      "end": 1.3812068965517241,
+      "text": "It's the end of the school day."
+    },
+    {
+      "start": 1.3913793103448278,
+      "end": 3.7027586206896554,
+      "text": "You're waiting in a long line of cars, watching the clock."
+    },
+    {
+      "start": 4.103448275862069,
+      "end": 6.806034482758621,
+      "text": "Inside, the office is trying to work out who's arrived, and which"
+    },
+    {
+      "start": 6.806034482758621,
+      "end": 7.936379310344829,
+      "text": "children are going home."
+    },
+    {
+      "start": 8.38,
+      "end": 10.651724137931033,
+      "text": "And out there is a teacher, helping everyone along."
+    },
+    {
+      "start": 10.861896551724135,
+      "end": 13.704310344827583,
+      "text": "Through the rain, the cold, or another hot afternoon."
+    },
+    {
+      "start": 14.105000000000002,
+      "end": 17.377586206896556,
+      "text": "Beside those idling cars, there's exhaust to breathe in, too."
+    },
+    {
+      "start": 17.858448275862074,
+      "end": 20.140344827586205,
+      "text": "What if better coordination meant less time standing beside those"
+    },
+    {
+      "start": 20.140344827586205,
+      "end": 20.970689655172418,
+      "text": "tailpipes?"
+    },
+    {
+      "start": 21.413333333333334,
+      "end": 22.473850574712646,
+      "text": "Does this sound familiar?"
+    },
+    {
+      "start": 23.18,
+      "end": 24.871551724137934,
+      "text": "That's why we're building DismissalCue."
+    },
+    {
+      "start": 25.13172413793103,
+      "end": 27.923965517241378,
+      "text": "To help families and schools stay connected, from the moment a"
+    },
+    {
+      "start": 27.923965517241378,
+      "end": 30.236206896551725,
+      "text": "parent arrives to the moment a child heads home."
+    },
+    {
+      "start": 30.68,
+      "end": 32.481896551724134,
+      "text": "Picture checking in for your children together."
+    },
+    {
+      "start": 32.80241379310345,
+      "end": 35.66448275862069,
+      "text": "The school sees who's here, checks pickup permissions, and calls"
+    },
+    {
+      "start": 35.66448275862069,
+      "end": 36.475,
+      "text": "the right children."
+    },
+    {
+      "start": 36.68517241379311,
+      "end": 39.347413793103435,
+      "text": "Staff still confirm the handoff, in person."
+    },
+    {
+      "start": 39.78000000000001,
+      "end": 42.01120689655173,
+      "text": "And pickup doesn't have to look the same for every child."
+    },
+    {
+      "start": 42.49206896551724,
+      "end": 43.73275862068965,
+      "text": "Soccer on Tuesdays?"
+    },
+    {
+      "start": 43.94293103448276,
+      "end": 45.40431034482759,
+      "text": "Art club on Thursdays?"
+    },
+    {
+      "start": 45.6644827586207,
+      "end": 47.596551724137925,
+      "text": "The school sets each child's pickup time."
+    },
+    {
+      "start": 47.997241379310346,
+      "end": 51.3394827586207,
+      "text": "Or, before a holiday weekend, it can schedule an earlier dismissal"
+    },
+    {
+      "start": 51.3394827586207,
+      "end": 52.29051724137932,
+      "text": "for the whole school."
+    },
+    {
+      "start": 52.71333333333334,
+      "end": 54.894540229885045,
+      "text": "Parents get clear updates about those plans."
+    },
+    {
+      "start": 55.295229885057466,
+      "end": 57.3971264367816,
+      "text": "Staff have a shared picture of what's happening."
+    },
+    {
+      "start": 57.65729885057472,
+      "end": 61.049712643678156,
+      "text": "And when someone needs help, they know which school office to contact."
+    },
+    {
+      "start": 61.480000000000004,
+      "end": 64.66189655172414,
+      "text": "It's about less confusion, and better support for the people looking"
+    },
+    {
+      "start": 64.66189655172414,
+      "end": 65.61293103448277,
+      "text": "after our children."
+    },
+    {
+      "start": 66.04666666666665,
+      "end": 67.83821839080457,
+      "text": "Would this make a difference at your school?"
+    },
+    {
+      "start": 68.67856321839076,
+      "end": 72.54235632183907,
+      "text": "Talk to your principal, your district, or your school board about"
+    },
+    {
+      "start": 72.54235632183907,
+      "end": 73.61321839080458,
+      "text": "DismissalCue."
+    },
+    {
+      "start": 74.09408045977011,
+      "end": 76.4252873563218,
+      "text": "Let's make the end of the school day better, together."
+    }
+  ],
+  "voice_id": "iP95p4xoKVk53GoZ742B",
+  "voice_settings": {
+    "stability": 0.45,
+    "similarity_boost": 0.75,
+    "style": 0.05,
+    "use_speaker_boost": true,
+    "speed": 1.0
+  },
+  "narration_tempo": 1.16
+}
