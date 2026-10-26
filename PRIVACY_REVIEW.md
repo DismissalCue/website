@@ -75,3 +75,33 @@ compliance. The proposed pages are intentionally marked as drafts.
 - [U.S. Department of Education: student privacy FAQs](https://studentprivacy.ed.gov/frequently-asked-questions): school control and permitted uses of education records.
 - [Apple: account deletion](https://developer.apple.com/support/offering-account-deletion-in-your-app/).
 - [Google Play: account deletion requirements](https://support.google.com/googleplay/android-developer/answer/13327111).
+
+
+## October 25 owner authorization and technical review update
+
+The owner authorized implementing gaps and publishing once practices support the
+text; the support team owns requests, and no real school/family records beyond
+synthetic demo data were reported. This approval does not itself prove an erasure
+or retention control. Branding PR5 was merged separately. The proposed policy
+remains a draft while the implementation work below is verified.
+
+- Canonical pickup-loop branding is included; all public pages now use system
+  fonts. The earlier homepage Google Fonts disclosure is superseded.
+- Source review confirms check-in diagnostics store coarse coordinate-free
+  bands. Do not describe raw coordinates as a retained database record without
+  identifying an actual store. Foreground processing still needs disclosure.
+- New app deletion initiation saves a self-only durable request, receipt and
+  30-day review due date. Submission is **not** completed erasure. Support-side
+  fulfillment, provider deletion and completion evidence remain required.
+- New fixed-capability maintenance expires check-in diagnostics independently of
+  new traffic, old encrypted browser attempts/sessions, and staff-assistant
+  question/answer text. Other notification, support, tool/audit and school-record
+  schedules are not proven by this worker.
+- Rolling encrypted backup expiry and a separately retained deletion ledger with
+  mandatory replay before restore remain unverified. Do not publish the proposed
+  35-day promise yet.
+- School-specific retention agreements, provider processing arrangements and
+  the pre-live data activation gate still require evidence before live use.
+
+This is an implementation status update, not a statement of legal certification
+or App Store/Google Play privacy approval.

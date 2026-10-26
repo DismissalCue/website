@@ -9,14 +9,14 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --primary: #2563EB;
-    --primary-dark: #1E40AF;
+    --primary: #08675C;
+    --primary-dark: #064C44;
     --navy: #0F172A;
     --cream: #F8FAFC;
     --cream-dark: #F1F5F9;
     --muted: #64748B;
     --text: #1E293B;
-    --border: rgba(37, 99, 235, 0.15);
+    --border: rgba(8, 103, 92, 0.15);
   }
 
   html { scroll-behavior: smooth; }
@@ -45,7 +45,7 @@
 
   .nav-logo {
     width: 36px; height: 36px;
-    background: linear-gradient(135deg, var(--primary) 0%, #3B82F6 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, #0D8B7D 100%);
     border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
   }
@@ -170,7 +170,7 @@
   }
 
   .policy-highlight {
-    background: rgba(37, 99, 235, 0.05);
+    background: rgba(8, 103, 92, 0.05);
     border-left: 3px solid var(--primary);
     padding: 1.5rem;
     margin: 2rem 0;
@@ -212,7 +212,7 @@
     transition: color 0.2s;
   }
 
-  .footer-links a:hover { color: #3B82F6; }
+  .footer-links a:hover { color: #0D8B7D; }
 
   .footer-copy {
     font-size: 0.8rem;
@@ -244,19 +244,20 @@
     .policy-section tbody th { border-radius: .375rem .375rem 0 0; }
     .policy-section tbody td { border-top: 0; border-radius: 0 0 .375rem .375rem; }
   }
+  /* Pickup-loop brand assets */
+  .nav-logo { display: block; flex-shrink: 0; object-fit: contain; background: #08675C; }
+  .footer-brand { display: flex; align-items: center; gap: .625rem; }
+  .footer-brand img { border-radius: 6px; }
 </style>
+<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon-180.png">
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="/">
-    <div class="nav-logo">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 11L12 14L22 4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
+    <img class="nav-logo" src="/assets/brand/pickup-loop.svg" width="40" height="40" alt="" aria-hidden="true">
     <span class="nav-brand-text">DismissalCue</span>
   </a>
   <a class="nav-back" href="/">
@@ -287,7 +288,7 @@
       <li><strong>Adult account information:</strong> name, email address, contact details provided for the service, school memberships, assigned duties, invitations and sign-in or recovery records.</li>
       <li><strong>School information:</strong> student names and school identifiers, classes and rooms, school-approved adult–child relationships, permission and restriction records, calendars and school help contacts.</li>
       <li><strong>Pickup information:</strong> requested children, arrival and cancellation times, classroom calls, supervision and readiness steps, the receiving adult, staff-recorded handoff and reconciliation records.</li>
-      <li><strong>Location evidence:</strong> location and accuracy information used when you choose phone check-in, together with the time and result of the proximity check.</li>
+      <li><strong>Location evidence:</strong> location and accuracy information processed when you choose phone check-in, together with the time and result of the proximity check. The check-in diagnostics store coarse bands rather than raw coordinates.</li>
       <li><strong>Device and security information:</strong> device or session identifiers, platform, IP address, sign-in events, registered public keys, error references and service logs needed to operate and protect the service.</li>
       <li><strong>Communications:</strong> school notices, delivery and acknowledgement records, and information you choose to include in support requests. If a school enables the optional staff assistant, its staff prompts and assistant records are also processed.</li>
     </ul>
@@ -322,7 +323,7 @@
       <li><strong>Service providers:</strong> hosting, delivery and support providers process information needed for their service. A configured model provider may process staff-assistant requests when the school enables that feature. We do not describe a provider as a recipient merely because we use its self-hosted software.</li>
       <li><strong>Required disclosures:</strong> we may disclose information when required by applicable law or valid legal process, or as necessary to address a security or safety incident. We assess the request and applicable school obligations.</li>
     </ul>
-    <p>The public website is hosted using GitHub Pages. The current home page loads fonts from Google; loading those resources can disclose technical connection information to that provider. This privacy page and the data-request page use system fonts without those external font requests.</p>
+    <p>The public website is hosted using GitHub Pages. Our public pages use system fonts and do not request external font resources. GitHub Pages may process technical connection information to serve the website.</p>
     <p>Before a school uses live records, its agreement and provider information must identify the applicable processing arrangements and any material service-provider changes.</p>
   </section>
 
@@ -373,7 +374,7 @@
   </section>
 </main>
 <footer>
-  <div class="footer-brand">DismissalCue</div>
+  <div class="footer-brand"><img src="/assets/brand/pickup-loop.svg" width="28" height="28" alt="">DismissalCue</div>
   <ul class="footer-links">
     <li><a href="/privacy.html">Privacy</a></li>
     <li><a href="/data-requests.html">Data requests</a></li>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">DismissalCue pickup loop</title>
+  <rect width="128" height="128" fill="#08675C" rx="28" />
+  <path d="M25.8 78 C17.1 57.1 27.1 33.2 48 24.5 C56.7 20.9 66.5 20.4 75.5 23" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+  <path d="M100.5 43.4 C106 53.5 107.1 66.4 102.1 77.5" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+  <path d="M39 67 L43.4 54.8 C44.9 50.5 48.5 48 53 48 L75 48 C79.5 48 83.1 50.5 84.6 54.8 L89 67 C91.1 69 92 71 92 74 L92 89 C92 91.2 90.2 93 88 93 L88 97 C88 99.2 86.2 101 84 101 L83 101 C80.8 101 79 99.2 79 97 L79 93 L49 93 L49 97 C49 99.2 47.2 101 45 101 L44 101 C41.8 101 40 99.2 40 97 L40 93 C37.8 93 36 91.2 36 89 L36 74 C36 71 36.9 69 39 67 Z M46.5 65.5 L49.5 56.8 C50.1 55.1 51.8 54 53.6 54 L74.4 54 C76.2 54 77.9 55.1 78.5 56.8 L81.5 65.5 Z M52 79 C52 81.21 50.21 83 48 83 C45.79 83 44 81.21 44 79 C44 76.79 45.79 75 48 75 C50.21 75 52 76.79 52 79 Z M84 79 C84 81.21 82.21 83 80 83 C77.79 83 76 81.21 76 79 C76 76.79 77.79 75 80 75 C82.21 75 84 76.79 84 79 Z" fill="#FFFFFF" fill-rule="evenodd" />
+  <circle cx="90.5" cy="29.5" r="7.2" fill="#F4B34C" />
+</svg>
