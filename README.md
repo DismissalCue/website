@@ -1,4 +1,4 @@
-# Driveline Website
+# DismissalCue Website
 
 Official website for [Driveline](https://dismissalcue.com) — Enterprise school pickup management platform.
 
@@ -7,7 +7,9 @@ Official website for [Driveline](https://dismissalcue.com) — Enterprise school
 | File | Description |
 |---|---|
 | `index.html` | Main landing page |
-| `privacy.html` | Privacy Policy |
+| `privacy.html` | Privacy Policy (proposed changes require review) |
+| `data-requests.html` | Proposed account deletion and data-request page |
+| `PRIVACY_REVIEW.md` | Proposed retention decisions and pre-publication checks |
 | `CNAME` | Custom domain configuration |
 
 ## About
@@ -38,3 +40,10 @@ This site is hosted on GitHub Pages and automatically deployed when changes are 
 ## Legal
 
 © 2026 Driveline. All rights reserved.
+
+## Privacy policy review
+
+Privacy updates on `review/privacy-policy-2026-10-25` are proposed text. Review
+`PRIVACY_REVIEW.md` and verify the operational commitments before merging to
+`main`, which publishes GitHub Pages. The draft pages deliberately retain a
+review notice and have no effective date.
