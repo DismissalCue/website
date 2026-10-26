@@ -3,21 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Driveline — School Pickup Management</title>
-<meta name="description" content="GPS-powered school pickup management with geofencing, real-time parent notifications, and comprehensive staff handoff records. Safer, faster dismissal for schools of any size.">
-<meta property="og:title" content="Driveline — School Pickup Management">
-<meta property="og:description" content="GPS geofencing for safer, faster school dismissal.">
+<title>DismissalCue — School Pickup Management</title>
+<meta name="description" content="School pickup coordination for parents and staff, with onsite check-in, classroom calls and staff-recorded handoff.">
+<meta property="og:title" content="DismissalCue — School Pickup Management">
+<meta property="og:description" content="Onsite check-in, classroom calls and staff-controlled pickup.">
 <meta property="og:url" content="https://dismissalcue.com">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --primary: #2563EB;
-    --primary-dark: #1E40AF;
-    --primary-light: #3B82F6;
+    --primary: #08675C;
+    --primary-dark: #064C44;
+    --primary-light: #0D8B7D;
     --accent: #10B981;
     --accent-dark: #059669;
     --navy: #0F172A;
@@ -32,7 +29,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: var(--cream);
     color: var(--text);
     overflow-x: hidden;
@@ -45,7 +42,7 @@
     padding: 1.25rem 4rem;
     background: rgba(248, 250, 252, 0.95);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+    border-bottom: 1px solid rgba(8, 103, 92, 0.1);
   }
 
   .nav-brand {
@@ -63,7 +60,7 @@
   .nav-logo svg { width: 24px; height: 24px; }
 
   .nav-brand-text {
-    font-family: 'DM Sans', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 1.35rem;
     font-weight: 700;
     color: var(--navy);
@@ -97,17 +94,12 @@
     overflow: hidden;
   }
 
-  .hero-pattern {
-    position: absolute; inset: 0;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%232563EB' stroke-width='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
-  }
 
   .hero-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: rgba(37, 99, 235, 0.1);
-    border: 1px solid rgba(37, 99, 235, 0.2);
+    background: rgba(8, 103, 92, 0.1);
+    border: 1px solid rgba(8, 103, 92, 0.2);
     border-radius: 100px;
     font-size: 0.8rem;
     font-weight: 500;
@@ -121,7 +113,7 @@
   }
 
   .hero-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: clamp(2.5rem, 8vw, 5rem);
     font-weight: 700;
     color: var(--navy);
@@ -161,19 +153,19 @@
     border-radius: 8px;
     text-decoration: none;
     transition: all 0.3s;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 4px 12px rgba(8, 103, 92, 0.2);
   }
 
   .hero-cta:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 8px 20px rgba(8, 103, 92, 0.3);
   }
 
   .hero-cta-secondary {
     background: white;
     color: var(--primary);
-    border: 1px solid rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(8, 103, 92, 0.2);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
@@ -245,7 +237,7 @@
   }
 
   .mission-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     color: var(--navy);
@@ -288,7 +280,7 @@
     background: var(--cream);
     padding: 2.5rem;
     border-radius: 12px;
-    border: 1px solid rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(8, 103, 92, 0.1);
     transition: all 0.3s;
   }
 
@@ -314,7 +306,7 @@
   }
 
   .feature-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--navy);
@@ -364,19 +356,19 @@
 
   .step-num {
     width: 56px; height: 56px;
-    background: rgba(37, 99, 235, 0.15);
+    background: rgba(8, 103, 92, 0.15);
     border: 2px solid var(--primary);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 1.5rem;
-    font-family: 'DM Sans', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-light);
   }
 
   .step-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
     color: white;
@@ -397,7 +389,7 @@
   }
 
   .cta-band-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     color: white;
@@ -444,7 +436,7 @@
   }
 
   .footer-brand {
-    font-family: 'DM Sans', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
     color: white;
@@ -493,20 +485,21 @@
   .hero > *:nth-child(3) { animation-delay: 0.3s; opacity: 0; }
   .hero > *:nth-child(4) { animation-delay: 0.4s; opacity: 0; }
   .hero > *:nth-child(5) { animation-delay: 0.5s; opacity: 0; }
+  /* Pickup-loop brand assets */
+  .nav-logo { display: block; flex-shrink: 0; object-fit: contain; background: #08675C; }
+  .footer-brand { display: flex; align-items: center; gap: .625rem; }
+  .footer-brand img { border-radius: 6px; }
 </style>
+<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon-180.png">
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="#">
-    <div class="nav-logo">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 11L12 14L22 4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <span class="nav-brand-text">Driveline</span>
+    <img class="nav-logo" src="/assets/brand/pickup-loop.svg" width="40" height="40" alt="" aria-hidden="true">
+    <span class="nav-brand-text">DismissalCue</span>
   </a>
   <ul>
     <li><a href="#mission">About</a></li>
@@ -518,9 +511,8 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-pattern"></div>
   <h1 class="hero-title">Smarter School<br><span>Pickup</span></h1>
-  <p class="hero-tagline">GPS geofencing that makes dismissal faster, safer, and stress-free for everyone.</p>
+  <p class="hero-tagline">A clear path from parent arrival to staff-verified pickup.</p>
   <div class="hero-cta-group">
     <a class="hero-cta" href="#contact">
       <span>Request a Demo</span>
@@ -532,10 +524,10 @@
 
 <!-- MISSION -->
 <section class="mission" id="mission">
-  <p class="section-label">About Driveline</p>
+  <p class="section-label">About DismissalCue</p>
   <h2 class="mission-title">End-of-day pickup chaos ends here</h2>
   <p class="mission-body">
-    Driveline uses GPS geofencing to coordinate safe, efficient student pickups. When parents arrive within your school's designated pickup zone, staff receive instant notifications with verified guardian information — eliminating long car lines, reducing wait times, and ensuring every child goes home with the right person, every time.
+    Parents check in when they arrive at school. Staff see the approved pickup request, call the classroom and verify the receiving adult before recording physical handoff. DismissalCue keeps the school’s progress in one place.
   </p>
 </section>
 
@@ -544,13 +536,13 @@
   <div class="demo-inner">
     <div class="demo-header">
       <p class="section-label">See It In Action</p>
-      <h2 class="mission-title">Watch how Driveline transforms dismissal</h2>
+      <h2 class="mission-title">Watch how DismissalCue transforms dismissal</h2>
     </div>
     <div class="demo-video-container">
       <video controls playsinline preload="metadata"
              width="1280" height="720"
              poster="media/driveline-simulation-poster.jpg?v=us-bella"
-             aria-label="Driveline school pickup simulation">
+             aria-label="DismissalCue school pickup simulation">
         <source src="media/driveline-simulation-narrated.mp4?v=us-bella" type="video/mp4">
         <track kind="captions" src="media/driveline-narration.en.vtt?v=us-bella" srclang="en" label="English">
         Your browser does not support embedded video.
@@ -573,7 +565,7 @@
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
         </div>
         <h3 class="feature-title">GPS Geofencing</h3>
-        <p class="feature-body">Define custom pickup zones around your school. Parents can only submit pickup requests when physically present within the geofence, eliminating fraudulent check-ins and ensuring safety.</p>
+        <p class="feature-body">Set the school’s pickup area. Phone check-in verifies arrival within that area. Families who cannot use phone check-in can ask the office for its supervised pickup procedure.</p>
       </div>
 
       <div class="feature-card">
@@ -581,7 +573,7 @@
           <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z"></path><path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21"></path></svg>
         </div>
         <h3 class="feature-title">Classroom Notifications</h3>
-        <p class="feature-body">The moment a parent enters the geofence, the classroom receives a notification to send the student to the pickup door — students are ready before parents even park.</p>
+        <p class="feature-body">After an approved check-in, staff call the assigned classroom. Teachers acknowledge the call, and staff record the student’s movement and readiness.</p>
       </div>
 
       <div class="feature-card">
@@ -589,7 +581,7 @@
           <svg viewBox="0 0 24 24"><path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </div>
         <h3 class="feature-title">Authorized Pickup Only</h3>
-        <p class="feature-body">Per-child authorization lists ensure only pre-approved guardians can request pickup. Multi-adult family accounts with individual permissions prevent unauthorized releases.</p>
+        <p class="feature-body">Each adult has a separate account and school-approved permissions for each child. Staff check the approved receiving adult before recording handoff.</p>
       </div>
 
       <div class="feature-card">
@@ -597,23 +589,23 @@
           <svg viewBox="0 0 24 24"><path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
         </div>
         <h3 class="feature-title">Complete Audit Trail</h3>
-        <p class="feature-body">Every pickup is logged with timestamp, GPS coordinates, guardian identity, staff member authorization, and digital signature — full compliance documentation for legal and safety requirements.</p>
+        <p class="feature-body">Arrival, classroom and handoff steps have recorded times and staff attribution. Raw location evidence is kept separate from retained custody facts.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24"><path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
         </div>
-        <h3 class="feature-title">Reduces Wait Times by 60%</h3>
-        <p class="feature-body">Geofencing allows staff to prepare students before parents arrive at the pickup point. No more long car lines or confused dismissals — students walk directly to waiting vehicles.</p>
+        <h3 class="feature-title">Keep the Line Moving</h3>
+        <p class="feature-body">Give office, classroom and curbside staff a shared view of dismissal progress, from an approved arrival to a recorded handoff.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11"></path></svg>
         </div>
-        <h3 class="feature-title">Bank-Level Security</h3>
-        <p class="feature-body">Multi-factor authentication (MFA), role-based access control, encrypted data transmission, and FERPA-compliant data handling protect sensitive student and family information.</p>
+        <h3 class="feature-title">Access Controls</h3>
+        <p class="feature-body">Multi-factor authentication, school-scoped roles and per-child permissions control access. Hosted service connections use HTTPS.</p>
       </div>
 
     </div>
@@ -630,23 +622,23 @@
     <div class="steps-grid">
       <div class="step">
         <div class="step-num">1</div>
-        <h4 class="step-title">Parent Enters Geofence</h4>
-        <p class="step-body">Guardian drives into the school's designated pickup zone. GPS automatically detects their arrival — no manual check-in needed.</p>
+        <h4 class="step-title">Parent Checks In</h4>
+        <p class="step-body">While safely stopped at school, the approved adult opens the app, selects eligible children and checks in. Optional reminders never check in automatically.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h4 class="step-title">Classroom Notified</h4>
-        <p class="step-body">Teacher receives notification with student name and pickup request. Student is sent to the pickup door before parent even parks.</p>
+        <h4 class="step-title">Staff Call the Classroom</h4>
+        <p class="step-body">Staff call the assigned classroom. The teacher acknowledges the call and follows the school’s supervision and staging procedure.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h4 class="step-title">Safe Handoff at Door</h4>
-        <p class="step-body">School staff at the door verify guardian identity and complete the handoff. Entire process takes 30 seconds instead of 5 minutes — no long waits, no confusion.</p>
+        <h4 class="step-title">Staff Record Handoff</h4>
+        <p class="step-body">Staff match the student and receiving adult to the approved pickup request, then record the physical handoff.</p>
       </div>
       <div class="step">
         <div class="step-num">4</div>
-        <h4 class="step-title">Parents Notified</h4>
-        <p class="step-body">All authorized family members receive instant app notification confirming pickup completion with timestamp. Complete audit trail stored for compliance.</p>
+        <h4 class="step-title">Pickup Status Updates</h4>
+        <p class="step-body">Adults with the school-approved information rights can follow pickup status and view the recorded handoff. Pickup permission and history access are separate.</p>
       </div>
     </div>
   </div>
@@ -655,7 +647,7 @@
 <!-- CTA BAND -->
 <section class="cta-band" id="contact">
   <h2 class="cta-band-title">Transform your school's dismissal process</h2>
-  <p class="cta-band-body">Join forward-thinking schools using GPS technology to make pickup faster, safer, and stress-free for everyone.</p>
+  <p class="cta-band-body">See how parent check-in, classroom calls and staff-recorded handoff fit your school’s pickup procedure.</p>
   <a class="cta-band-button" href="mailto:hello@dismissalcue.com">
     <span>Request a Demo</span>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -664,14 +656,14 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">Driveline</div>
+  <div class="footer-brand"><img src="/assets/brand/pickup-loop.svg" width="28" height="28" alt="">DismissalCue</div>
   <ul class="footer-links">
     <li><a href="mailto:hello@dismissalcue.com">Contact</a></li>
     <li><a href="mailto:support@dismissalcue.com">Support</a></li>
-    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/privacy.html">Privacy</a></li>
     <li><a href="#features">Features</a></li>
   </ul>
-  <p class="footer-copy">© 2026 Driveline. All rights reserved.</p>
+  <p class="footer-copy">© 2026 DismissalCue. All rights reserved.</p>
 </footer>
 
 </body>
