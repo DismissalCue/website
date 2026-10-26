@@ -15,15 +15,15 @@ location or notifications without the adult's OS permission.
 
 Raw precise coordinates are processed during check-in; diagnostics retain
 coordinate-free bands. School notification/delivery/audit facts follow the
-school's written schedule, rather than an invented universal90-day purge. Support
-case correspondence is manually reviewed for removal90 days after closure.
+school's written schedule, rather than an invented universal 90-day purge. Support
+case correspondence is manually reviewed for removal 90 days after closure.
 
 ## Verified technical evidence
 
-Application commit61e2ec12b3ae00753881a8cd6ca0a9c4ec86cc6d passed full local
-make check and make integration at schema76. CI40329515692 passed all checks,
+Application commit 61e2ec12b3ae00753881a8cd6ca0a9c4ec86cc6d passed full local
+make check and make integration at schema 76. CI 40329515692 passed all checks,
 vulnerability gates, signed-artifact verification and hosted deployment. The
-server's deployed marker and schema76 were independently verified.
+server's deployed marker and schema 76 were independently verified.
 
 - In-app and web self-only deletion requests have durable references. A request
   receipt does not mean completed erasure.
@@ -40,9 +40,9 @@ server's deployed marker and schema76 were independently verified.
 - The private NYC3 backup bucket has bucket-limited worker credentials. Both
   actual encrypted databases were downloaded, authenticated and restored into
   disposable isolated local databases; the test databases were removed.
-- The deployed backup service completed successfully October26 at13:47UTC,
+- The deployed backup service completed successfully October 26 at 13:47 UTC,
   uploading application and identity backups. Its daily timer is active and
-  worker expiry is bounded below the35-day maximum. Independent provider
+  worker expiry is bounded below the 35-day maximum. Independent provider
   lifecycle configuration is not claimed to be enabled.
 - The encrypted deletion journal was independently mirrored. Its keys and
   checkpoint are outside database backups and private credentials stay out of
@@ -51,8 +51,8 @@ server's deployed marker and schema76 were independently verified.
   five hosted dependency containers use journald rather than indefinite Docker
   JSON logs. Routine logs have bounded retention; preserved incident evidence
   needs its own documented owner, purpose and expiry.
-- The public deletion page route returns HTTP200. Privacy/request layouts fit
-  390px mobile and1280px desktop, with resolving local links.
+- The public deletion page route returns HTTP 200. Privacy/request layouts fit
+  390px mobile and 1280px desktop, with resolving local links.
 
 ## Operational and launch limits
 
