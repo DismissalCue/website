@@ -105,3 +105,30 @@ remains a draft while the implementation work below is verified.
 
 This is an implementation status update, not a statement of legal certification
 or App Store/Google Play privacy approval.
+
+## October 26 implementation evidence
+
+Main application commit 61e2ec12b3ae00753881a8cd6ca0a9c4ec86cc6d includes
+in-app/web requests, separate support fulfillment and restore capabilities,
+provider deletion verification, durable encrypted mirrored deletion evidence,
+bounded diagnostics/assistant context and encrypted backup tooling. Full local
+make check and make integration passed at schema76. Swift143 tests passed with
+four external skips; Android tests/lint/build passed. CI/deployment is still
+running; this branch remains a draft until hosted controls are verified.
+
+Actual application and identity database backups were uploaded to private
+DigitalOcean Spaces, downloaded, authenticated and restored into isolated
+local disposable databases; those databases were removed. A baseline encrypted
+deletion journal was mirrored separately. No actual account was deleted.
+
+Retention copy now distinguishes transient raw coordinates from stored coarse
+diagnostics, school notification records from manually reviewed support cases,
+and transient assistant context from retained school audit facts. No universal
+90-day notification purge is asserted. The reminder preference starts on but
+requires separate OS permission. Support owns verified requests and must review
+its queue and case retention. Provider lifecycle remains an additional pending
+defense; do not say it is enabled merely because worker expiry is implemented.
+
+Mailbox delivery and real-school agreements are not independently established by
+these tests. No real customer school/family data was reported. The policy does
+not certify FERPA/COPPA compliance, a completed independent audit or store approval.

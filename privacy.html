@@ -298,8 +298,8 @@
   <section class="policy-section" id="location">
     <h2>3. Location and optional reminders</h2>
     <p>When you choose to check in, the app requests foreground location to verify arrival near your school’s pickup area. A location match does not authorize a release: school staff still verify the receiving adult and record physical handoff.</p>
-    <p>Near-school reminders are optional. After a separate explanation and permission choice, the app can use operating-system background geofences to offer a local reminder around pickup time. A reminder does not check you in automatically, grant pickup rights or record a handoff.</p>
-    <p>Reminder geofences are not a continuous location feed to the school. Staff do not receive a live map of your movements. Raw check-in coordinates are handled separately from retained custody facts.</p>
+    <p>Near-school reminders are optional. The reminder preference starts on, and you can turn it off. After a separate explanation and your operating-system permission choice, the app can use background geofences to offer a local reminder at about half a mile from school around pickup time. A reminder does not check you in automatically, grant pickup rights or record a handoff.</p>
+    <p>Reminder geofences are not a continuous location feed to the school. Staff do not receive a live map of your movements. Raw check-in coordinates are processed for your check-in; retained custody facts do not include those coordinates.</p>
     <p>You can turn reminders off in the app and change location or notification permissions in device settings. If you cannot share location or use phone check-in, ask the office for its supervised pickup procedure.</p>
   </section>
 
@@ -328,28 +328,29 @@
   </section>
 
   <section class="policy-section" id="retention">
-    <h2>6. Proposed retention periods</h2>
-    <p>The periods below are proposed operating limits, not claims that one law requires the same period for every school. A school must select its record-specific retention schedule before live student records are activated. A documented preservation requirement can delay eligible deletion; retained information remains restricted.</p>
+    <h2>6. Retention periods</h2>
+    <p>The periods below are operating limits, not claims that one law requires the same period for every school. A school must select its record-specific retention schedule before live student records are activated. A documented preservation requirement can delay eligible deletion; retained information remains restricted.</p>
     <table role="table">
-      <thead><tr><th scope="col">Information</th><th scope="col">Proposed period or rule</th></tr></thead>
+      <thead><tr><th scope="col">Information</th><th scope="col">Period or rule</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Raw check-in coordinates</th><td>At most 7 days in primary storage and replicas. Retained custody facts do not include the raw coordinates.</td></tr>
+        <tr><th scope="row">Precise check-in coordinates and check-in diagnostics</th><td>Precise coordinates are processed for the check-in and are not retained in the diagnostic record. Coordinate-free diagnostic bands are kept for at most 7 days in active storage.</td></tr>
         <tr><th scope="row">Student, permission and custody/history records</th><td>The district’s documented schedule and any applicable preservation requirement. There is no universal seven-year default.</td></tr>
         <tr><th scope="row">Eligible adult account/profile data after a verified deletion request</th><td>Complete eligible removal within 30 days. Explain any retained school records or documented preservation exception.</td></tr>
-        <tr><th scope="row">Routine operational and security diagnostics</th><td>30 days, unless retained under a documented incident or required school-record schedule.</td></tr>
-        <tr><th scope="row">Informational notifications and routine support correspondence</th><td>90 days. Evidence forming part of a school’s custody record follows that school’s schedule.</td></tr>
-        <tr><th scope="row">Optional staff-assistant prompts and conversation records</th><td>At most 30 days unless a specific longer need and its period are documented.</td></tr>
+        <tr><th scope="row">Routine operational and security diagnostics</th><td>At most 30 days in active routine logs, normally shorter. Separately preserved incident evidence or school records have a documented purpose and schedule.</td></tr>
+        <tr><th scope="row">School notices and delivery or acknowledgement records</th><td>Follow the school’s documented record schedule when they form part of the school service or custody evidence.</td></tr>
+        <tr><th scope="row">Routine support correspondence</th><td>Reviewed for removal 90 days after the case closes, unless a documented preservation requirement applies.</td></tr>
+        <tr><th scope="row">Optional staff-assistant prompts and conversation records</th><td>Prompt, answer and tool context are removed from active storage within 30 days. Separate school audit facts follow the school’s schedule.</td></tr>
         <tr><th scope="row">Rolling backups</th><td>A 35-day rolling window. Eligible data removed from primary systems ages out of existing backups; deletion records must be reapplied before a restored service resumes.</td></tr>
       </tbody>
     </table>
-    <p>Deleting an account is different from deleting the school’s student or custody records. We do not promise immediate erasure from immutable backup media or silently rewrite a completed handoff.</p>
+    <p>Deleting an account is different from deleting the school’s student or custody records. Existing encrypted backups expire within the rolling window; completed deletion records must be reapplied before restored service resumes. Minimal deletion evidence is retained separately to prevent erased accounts from returning after a restore. We do not silently rewrite a completed handoff.</p>
   </section>
 
   <section class="policy-section" id="rights">
     <h2>7. Access, correction and deletion requests</h2>
     <p>You can request access to your information, correction of inaccurate information, or deletion of your adult account and eligible associated data. A separate school review may be needed for a student record or school-controlled information. We verify requests through an appropriate trusted channel before disclosing or deleting protected information.</p>
     <p>Account deletion ends the adult account’s access. It does not approve a recovery, clear a pickup hold, remove another adult’s rights or create a new release. If an active pickup or a school control role needs a safe handover, we arrange that review and explain the result.</p>
-    <p>Use the <a href="/data-requests.html">account deletion and data-request page</a>, or email <a href="mailto:privacy@dismissalcue.com">privacy@dismissalcue.com</a>. You can use the web request path after uninstalling the app. We confirm completion and explain any information retained and the reason for retaining it.</p>
+    <p>In the app, open Settings → Privacy → Delete my account, or use the <a href="/data-requests.html">account deletion and data-request page</a>, or email <a href="mailto:privacy@dismissalcue.com">privacy@dismissalcue.com</a>. You can use the web request path after uninstalling the app. We confirm completion and explain any information retained and the reason for retaining it.</p>
     <p>Do not email passwords, authenticator or recovery codes, identity-document photographs, or a child’s precise location. Do not include a full student roster in a support request.</p>
   </section>
 
