@@ -1,134 +1,78 @@
-# Proposed privacy policy — October 25, 2026
+# Privacy publication record — October 26, 2026
 
-Prepared at the owner's request for review. This branch does not change the live
-GitHub Pages policy. Merging into `main` publishes the website automatically.
+The owner authorized fixing gaps and publishing the policy. The support team
+owns privacy/deletion requests; the owner reports no real school/family records
+beyond the synthetic demo. This record distinguishes technical evidence from
+legal certification, store approval and live-school activation.
 
-## What changed
+## Published scope
 
-- Replaced Driveline branding and the placeholder privacy address with
-  DismissalCue / Dismissalcue LLC and the existing published privacy contact.
-- Explained adult invitation-only accounts, school-controlled student records,
-  separate per-child rights and school-controlled physical handoff.
-- Distinguished foreground location for check-in from optional OS background
-  geofences for local reminders. No automatic check-in or location-authorized
-  release is promised.
-- Described device-local biometrics and private keys without claiming the company
-  collects Face ID templates.
-- Removed claims of a universal legally required seven-year retention period,
-  completed periodic independent audits, blanket TLS 1.3-only connections and
-  guaranteed universal thirty-day school-data erasure.
-- Added `data-requests.html`, with a discoverable email request path, verification
-  steps, retained-school-record exceptions and a warning that requesting deletion
-  is different from completion.
-- Removed external font requests from these two privacy pages and disclosed the
-  existing Google Fonts dependency on the home page. The site remains on GitHub
-  Pages; this review does not change hosting or introduce analytics.
+The policy explains school-controlled student records, adult accounts, separate
+per-child rights, foreground check-in location, optional half-mile reminders,
+local biometrics, service recipients, retention, deletion and retained-record
+exceptions. The reminder preference starts on but cannot activate background
+location or notifications without the adult's OS permission.
 
-## Proposed business decisions
+Raw precise coordinates are processed during check-in; diagnostics retain
+coordinate-free bands. School notification/delivery/audit facts follow the
+school's written schedule, rather than an invented universal90-day purge. Support
+case correspondence is manually reviewed for removal90 days after closure.
 
-These are proposed operating limits, not assertions about universal legal
-requirements. Approving the policy targets is distinct from confirming that
-the software and support process implement them.
+## Verified technical evidence
 
-| Record | Proposed rule |
-| --- | --- |
-| Raw precise check-in coordinates | Maximum 7 days in primary storage and replicas |
-| Student/permission/custody history | District-selected written schedule before live activation; documented preservation exceptions |
-| Eligible adult account/profile information | Removal within 30 days after a verified request, with explained exceptions |
-| Routine operational/security diagnostics | 30 days; separately documented incident or school records can have another schedule |
-| Informational notifications and routine support correspondence | 90 days; school custody evidence follows the district's schedule |
-| Staff-assistant conversation records | Maximum 30 days unless a specific longer need and period are documented |
-| Backups | Rolling 35 days; deletion ledger replay before restored service resumes |
+Application commit61e2ec12b3ae00753881a8cd6ca0a9c4ec86cc6d passed full local
+make check and make integration at schema76. CI40329515692 passed all checks,
+vulnerability gates, signed-artifact verification and hosted deployment. The
+server's deployed marker and schema76 were independently verified.
 
-## Checks required before merging as an effective policy
+- In-app and web self-only deletion requests have durable references. A request
+  receipt does not mean completed erasure.
+- Root-only support fulfillment revokes access, verifies identity-provider
+  deletion, removes eligible adult profile data and mirrors encrypted deletion
+  evidence. Active pickup, offline reconciliation or staff handover can block
+  unsafe fulfillment. Tests preserve school custody and original request dates.
+- A separate isolated restore capability replays deletion evidence and re-expires
+  transient data before cutover. Tests cover missing, tampered and truncated
+  evidence. No actual demo account was erased during this work.
+- The hosted privacy-maintenance service is active and independently expires
+  diagnostics and assistant prompt/answer/tool context without new traffic.
+  Six/29-day cutoffs leave margin before the public seven/30-day active limits.
+- The private NYC3 backup bucket has bucket-limited worker credentials. Both
+  actual encrypted databases were downloaded, authenticated and restored into
+  disposable isolated local databases; the test databases were removed.
+- The deployed backup service completed successfully October26 at13:47UTC,
+  uploading application and identity backups. Its daily timer is active and
+  worker expiry is bounded below the35-day maximum. Independent provider
+  lifecycle configuration is not claimed to be enabled.
+- The encrypted deletion journal was independently mirrored. Its keys and
+  checkpoint are outside database backups and private credentials stay out of
+  Git and public pages.
+- The log-retention service completed successfully; its timer is active and all
+  five hosted dependency containers use journald rather than indefinite Docker
+  JSON logs. Routine logs have bounded retention; preserved incident evidence
+  needs its own documented owner, purpose and expiry.
+- The public deletion page route returns HTTP200. Privacy/request layouts fit
+  390px mobile and1280px desktop, with resolving local links.
 
-1. Confirm the legal entity spelling and the privacy/support mailboxes. The
-   addresses were already on the site; their inbound delivery and staffed
-   request handling have not been verified in this review. Do not email
-   verification secrets, identity-document photos or student rosters.
-2. Confirm actual hosting/processing regions, current email/SMS providers and
-   model-provider terms in the service-provider register and school agreement.
-   The policy does not invent a hosting country or promise that every optional
-   provider is currently enabled.
-3. Implement and verify the in-app account-deletion initiation, identity review,
-   account/session/provider revocation, safe active-pickup or staff-role handover,
-   eligible data erasure, preservation notices and completion tracking. A mailto
-   link is not evidence that this lifecycle exists or that store requirements
-   are met.
-4. Enforce the selected retention periods across primary data, replicas,
-   notifications, support/assistant records and backup expiry. Prove restore
-   deletion-ledger replay and district offboarding. Current read expiry or
-   purging only when another write occurs is not proof of timely erasure.
-5. Reconcile any existing customer commitments before replacing the old site's
-   published retention promises. Do not silently reinterpret an existing
-   agreement or remove a documented preservation requirement.
-6. Obtain owner/legal review, set the effective date, remove the review banner
-   and publish the final text only after commitments match actual operations.
+## Operational and launch limits
 
-This document is a technical/product review aid, not a certification of legal
-compliance. The proposed pages are intentionally marked as drafts.
+Support must monitor both published inboxes, review requests daily, verify
+identity through a trusted process, explain delays/retained categories and record
+completion. Inbound mailbox delivery was not independently tested by this task;
+no unrequested test messages were sent. Manual procedures are not described as
+automated mailbox deletion.
 
-## Sources consulted
+Before live-school activation, complete the school-specific retention/processing
+agreements, provider register, full device/GPS/offline/reconciliation rehearsals,
+independent security review and remaining product release gates. The policy does
+not certify FERPA/COPPA compliance, claim an uncompleted audit, or establish App
+Store/Google Play acceptance. Native builds are still prepublication artifacts.
 
-- [FTC: Protecting Personal Information](https://www.ftc.gov/business-guidance/resources/protecting-personal-information-guide-business): minimize retained data and document retention/disposal.
-- [FTC: Privacy and Security](https://www.ftc.gov/business-guidance/privacy-security): make privacy promises match actual practices.
-- [U.S. Department of Education: student privacy FAQs](https://studentprivacy.ed.gov/frequently-asked-questions): school control and permitted uses of education records.
-- [Apple: account deletion](https://developer.apple.com/support/offering-account-deletion-in-your-app/).
-- [Google Play: account deletion requirements](https://support.google.com/googleplay/android-developer/answer/13327111).
+## Primary guidance checked
 
-
-## October 25 owner authorization and technical review update
-
-The owner authorized implementing gaps and publishing once practices support the
-text; the support team owns requests, and no real school/family records beyond
-synthetic demo data were reported. This approval does not itself prove an erasure
-or retention control. Branding PR5 was merged separately. The proposed policy
-remains a draft while the implementation work below is verified.
-
-- Canonical pickup-loop branding is included; all public pages now use system
-  fonts. The earlier homepage Google Fonts disclosure is superseded.
-- Source review confirms check-in diagnostics store coarse coordinate-free
-  bands. Do not describe raw coordinates as a retained database record without
-  identifying an actual store. Foreground processing still needs disclosure.
-- New app deletion initiation saves a self-only durable request, receipt and
-  30-day review due date. Submission is **not** completed erasure. Support-side
-  fulfillment, provider deletion and completion evidence remain required.
-- New fixed-capability maintenance expires check-in diagnostics independently of
-  new traffic, old encrypted browser attempts/sessions, and staff-assistant
-  question/answer text. Other notification, support, tool/audit and school-record
-  schedules are not proven by this worker.
-- Rolling encrypted backup expiry and a separately retained deletion ledger with
-  mandatory replay before restore remain unverified. Do not publish the proposed
-  35-day promise yet.
-- School-specific retention agreements, provider processing arrangements and
-  the pre-live data activation gate still require evidence before live use.
-
-This is an implementation status update, not a statement of legal certification
-or App Store/Google Play privacy approval.
-
-## October 26 implementation evidence
-
-Main application commit 61e2ec12b3ae00753881a8cd6ca0a9c4ec86cc6d includes
-in-app/web requests, separate support fulfillment and restore capabilities,
-provider deletion verification, durable encrypted mirrored deletion evidence,
-bounded diagnostics/assistant context and encrypted backup tooling. Full local
-make check and make integration passed at schema76. Swift143 tests passed with
-four external skips; Android tests/lint/build passed. CI/deployment is still
-running; this branch remains a draft until hosted controls are verified.
-
-Actual application and identity database backups were uploaded to private
-DigitalOcean Spaces, downloaded, authenticated and restored into isolated
-local disposable databases; those databases were removed. A baseline encrypted
-deletion journal was mirrored separately. No actual account was deleted.
-
-Retention copy now distinguishes transient raw coordinates from stored coarse
-diagnostics, school notification records from manually reviewed support cases,
-and transient assistant context from retained school audit facts. No universal
-90-day notification purge is asserted. The reminder preference starts on but
-requires separate OS permission. Support owns verified requests and must review
-its queue and case retention. Provider lifecycle remains an additional pending
-defense; do not say it is enabled merely because worker expiry is implemented.
-
-Mailbox delivery and real-school agreements are not independently established by
-these tests. No real customer school/family data was reported. The policy does
-not certify FERPA/COPPA compliance, a completed independent audit or store approval.
+- https://www.ftc.gov/business-guidance/resources/protecting-personal-information-guide-business
+- https://studentprivacy.ed.gov/frequently-asked-questions
+- https://developer.apple.com/help/app-review/guideline-reference/5-1-1-account-deletion
+- https://support.google.com/googleplay/android-developer/answer/13327111
+- https://developer.apple.com/app-store/app-privacy-details/
+- https://support.google.com/googleplay/android-developer/answer/10787469
